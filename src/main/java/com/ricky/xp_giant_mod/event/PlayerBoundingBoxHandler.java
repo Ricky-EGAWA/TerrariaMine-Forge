@@ -1,6 +1,7 @@
 package com.ricky.xp_giant_mod.event;
 
 import com.ricky.xp_giant_mod.XPGiantMod;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.TickEvent;
@@ -28,11 +29,39 @@ public class PlayerBoundingBoxHandler {
                 scale = 7.5f; // レベル20を超える場合のスケール
             }
 
+            // 現在のポーズを取得
+            Pose currentPose = player.getPose();
+
+            // ポーズに応じた当たり判定ボックスを設定
+            AABB newBox;
+            switch (currentPose) {
+                case SWIMMING:
+                case FALL_FLYING:
+                    // 泳ぎ/滑空時は横幅が狭く高さが低い
+                    newBox = new AABB(
+                            player.getX() - 0.3 * scale, player.getY(), player.getZ() - 0.3 * scale,
+                            player.getX() + 0.3 * scale, player.getY() + 0.6 * scale, player.getZ() + 0.3 * scale
+                    );
+                    break;
+
+                case CROUCHING:
+                    // しゃがみ時は高さが低い
+                    newBox = new AABB(
+                            player.getX() - 0.3 * scale, player.getY(), player.getZ() - 0.3 * scale,
+                            player.getX() + 0.3 * scale, player.getY() + 1.5 * scale, player.getZ() + 0.3 * scale
+                    );
+                    break;
+
+                default:
+                    // 通常時は標準の高さ
+                    newBox = new AABB(
+                            player.getX() - 0.3 * scale, player.getY(), player.getZ() - 0.3 * scale,
+                            player.getX() + 0.3 * scale, player.getY() + 1.8 * scale, player.getZ() + 0.3 * scale
+                    );
+                    break;
+            }
+
             // 新しい当たり判定ボックスを設定
-            AABB newBox = new AABB(
-                    player.getX() - 0.3 * scale, player.getY(), player.getZ() - 0.3 * scale,
-                    player.getX() + 0.3 * scale, player.getY() + 1.8 * scale, player.getZ() + 0.3 * scale
-            );
             player.setBoundingBox(newBox);
         }
     }
