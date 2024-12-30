@@ -1,8 +1,8 @@
-package com.ricky.terrariamod;
+package com.ricky.xp_giant_mod;
 
 import com.mojang.logging.LogUtils;
-import com.ricky.terrariamod.item.ModCreativeModTabs;
-import com.ricky.terrariamod.item.ModItems;
+import com.ricky.xp_giant_mod.item.ModCreativeModTabs;
+import com.ricky.xp_giant_mod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -16,12 +16,12 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod(TerrariaMod.MOD_ID)
-public class TerrariaMod{
-    public static final String MOD_ID = "terrariamod";
+@Mod(XPGiantMod.MOD_ID)
+public class XPGiantMod {
+    public static final String MOD_ID = "xp_giant_mod";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public TerrariaMod() {
+    public XPGiantMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModCreativeModTabs.register(modEventBus);
