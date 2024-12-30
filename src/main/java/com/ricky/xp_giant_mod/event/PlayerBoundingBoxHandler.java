@@ -14,7 +14,19 @@ public class PlayerBoundingBoxHandler {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             Player player = event.player;
-            float scale = 3f; // 当たり判定を縮小
+            int experienceLevel = player.experienceLevel; // プレイヤーの経験値レベルを取得
+
+            // スケールを経験値レベルに応じて設定
+            float scale;
+            if (experienceLevel <= 5) {
+                scale = 1.0f;
+            } else if (experienceLevel <= 10) {
+                scale = 2.5f;
+            } else if (experienceLevel <= 20) {
+                scale = 5.0f;
+            } else {
+                scale = 7.5f; // レベル20を超える場合のスケール
+            }
 
             // 新しい当たり判定ボックスを設定
             AABB newBox = new AABB(
