@@ -15,6 +15,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> COBALT_RAW = ITEMS.register("cobalt_raw",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> XP = ITEMS.register("xp",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

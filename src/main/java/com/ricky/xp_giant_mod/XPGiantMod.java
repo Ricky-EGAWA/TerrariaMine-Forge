@@ -30,6 +30,9 @@ public class XPGiantMod {
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+
+        // イベント登録
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
