@@ -1,6 +1,7 @@
 package com.ricky.xp_giant_mod;
 
 import com.mojang.logging.LogUtils;
+import com.ricky.xp_giant_mod.event.BlockBreakHandler;
 import com.ricky.xp_giant_mod.item.ModCreativeModTabs;
 import com.ricky.xp_giant_mod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -24,15 +25,19 @@ public class XPGiantMod {
     public XPGiantMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        // アイテムやタブの登録
         ModCreativeModTabs.register(modEventBus);
         ModItems.register(modEventBus);
 
+        // 共通セットアップイベントの登録
         modEventBus.addListener(this::commonSetup);
-        MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
 
-        // イベント登録
+        // このMODのクラス自体をイベントバスに登録
+        MinecraftForge.EVENT_BUS.register(this);
 
+        // BlockBreakHandlerの登録
+        MinecraftForge.EVENT_BUS.register(BlockBreakHandler.class);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

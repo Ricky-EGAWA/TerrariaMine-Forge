@@ -17,7 +17,7 @@ public abstract class ItemEntityRendererMixin {
     @Inject(method = "render", at = @At("HEAD"), cancellable = true)
     public void render(ItemEntity pEntity, float pEntityYaw, float pPartialTicks, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, CallbackInfo ci) {
         // スケールを適用
-        float scale = 3.0F; // アイテムの拡大率を指定
+        float scale = 3.0F; // アイテムの拡大率を指定//TODO scale
         pPoseStack.scale(scale, scale, scale);
         // 影の大きさをスケールに合わせて変更
         this.shadowRadius = 0.15F * scale;

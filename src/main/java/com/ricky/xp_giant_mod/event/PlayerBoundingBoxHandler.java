@@ -19,7 +19,7 @@ public class PlayerBoundingBoxHandler {
             int experienceLevel = player.experienceLevel; // プレイヤーの経験値レベルを取得
 
             // スケールを経験値レベルに応じて設定
-            float scale;
+            float scale;//TODO scale
             if (experienceLevel <= 5) {
                 scale = 1.0f;
             } else if (experienceLevel <= 10) {
