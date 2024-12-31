@@ -14,11 +14,10 @@ public class ModCreativeModTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, XPGiantMod.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> MOD_ITEM_TAB = CREATE_MODE_TABS.register("mod_item_tab",
-            () -> CreativeModeTab.builder().icon(()-> new ItemStack(ModItems.COBALT_INGOT.get()))
+            () -> CreativeModeTab.builder().icon(()-> new ItemStack(ModItems.XP.get()))
                     .title(Component.translatable("creativetab.mod_item_tab"))
                     .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(ModItems.COBALT_INGOT.get());
-                        pOutput.accept(ModItems.COBALT_RAW.get());
+                        pOutput.accept(ModItems.XP.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

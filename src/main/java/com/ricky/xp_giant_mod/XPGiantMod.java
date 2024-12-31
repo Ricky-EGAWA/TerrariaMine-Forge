@@ -46,8 +46,6 @@ public class XPGiantMod {
     //クリエイティブタブに追加
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.COBALT_INGOT);
-            event.accept(ModItems.COBALT_RAW);
         }
     }
 
