@@ -1,5 +1,6 @@
 package com.ricky.xp_giant_mod.mixin;
 
+import com.ricky.xp_giant_mod.event.ChargeJumpHandler;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
@@ -33,7 +34,13 @@ public abstract class LivingEntityMixin {
             float jumpBoostPower = entity.getJumpBoostPower();
 
             // カスタマイズしたジャンプ力の計算
-            float modified = 0.42F * blockJumpFactor * scale + jumpBoostPower;
+            int chargeJump = 1;
+            if (ChargeJumpHandler.canChargeJump){
+                chargeJump = 10;
+                System.out.println("Super Jump Detected!");
+                ChargeJumpHandler.setSuperJumping(true);
+            }
+            float modified = 0.42F * blockJumpFactor * scale *chargeJump + jumpBoostPower;
             cir.setReturnValue(modified);
         }
     }
