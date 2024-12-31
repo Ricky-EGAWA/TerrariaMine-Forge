@@ -4,6 +4,7 @@ import com.ricky.xp_giant_mod.XPGiantMod;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -63,6 +64,18 @@ public class PlayerBoundingBoxHandler {
 
             // 新しい当たり判定ボックスを設定
             player.setBoundingBox(newBox);
+            // スケールに応じた属性を設定
+            applyScaleAttributes(player, scale);
         }
+    }
+    private static void applyScaleAttributes(Player player, float scale) {
+        // 移動速度を変更
+        player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED)
+                .setBaseValue(0.1F * scale); // デフォルト速度 0.1 にスケールを乗じる TODO しゃがみなどの移動速度調整
+
+
+        // リーチ距離を変更
+        player.getAttribute(ForgeMod.BLOCK_REACH.get())
+                .setBaseValue(4.5F * scale); // デフォルトリーチ距離 4.5 にスケールを乗じる
     }
 }
