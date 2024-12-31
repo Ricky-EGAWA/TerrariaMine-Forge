@@ -2,6 +2,7 @@ package com.ricky.xp_giant_mod.event;
 
 import com.ricky.xp_giant_mod.XPGiantMod;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeMod;
@@ -70,12 +71,38 @@ public class PlayerBoundingBoxHandler {
     }
     private static void applyScaleAttributes(Player player, float scale) {
         // 移動速度を変更
-        player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED)
+        player.getAttribute(Attributes.MOVEMENT_SPEED)
                 .setBaseValue(0.1F * scale); // デフォルト速度 0.1 にスケールを乗じる TODO しゃがみなどの移動速度調整
 
 
         // リーチ距離を変更
         player.getAttribute(ForgeMod.BLOCK_REACH.get())
                 .setBaseValue(4.5F * scale); // デフォルトリーチ距離 4.5 にスケールを乗じる
+
+        int experienceLevel = player.experienceLevel;
+
+        // 攻撃力
+        if ( experienceLevel >= 50) {
+            player.getAttribute(Attributes.ATTACK_DAMAGE)
+                    .setBaseValue(16);
+        }
+        if ( experienceLevel >= 80) {
+            player.getAttribute(Attributes.ATTACK_DAMAGE)
+                    .setBaseValue(20);
+        }
+        if ( experienceLevel >= 90) {
+            player.getAttribute(Attributes.ATTACK_DAMAGE)
+                    .setBaseValue(140);
+        }
+
+        //体力
+        if ( experienceLevel >= 40) {
+            player.getAttribute(Attributes.MAX_HEALTH)
+                    .setBaseValue(40);
+        }
+        if ( experienceLevel >= 80) {
+            player.getAttribute(Attributes.MAX_HEALTH)
+                    .setBaseValue(100);
+        }
     }
 }
