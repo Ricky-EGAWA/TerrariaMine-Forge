@@ -18,6 +18,8 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.mod_item_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.XP.get());
+                        pOutput.accept(ModItems.SMALL_XP.get());
+                        pOutput.accept(ModItems.MEDIUM_XP.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {
