@@ -1,7 +1,6 @@
 package com.ricky.xp_giant_mod.event;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
@@ -26,7 +25,7 @@ public class BlockBreakHandler {
             Level level = event.getPlayer().level();
             BlockPos pos = event.getPos();
             breakBlocks(level, pos, player);
-        }else if ( itemStack.isEmpty() ){
+        }else if ( itemStack.isEmpty() && player.experienceLevel>=60){
             Level level = event.getPlayer().level();
             BlockPos pos = event.getPos();
             breakBlocksHand(level, pos, player);
@@ -65,8 +64,6 @@ public class BlockBreakHandler {
         }
     }
     public static void breakBlocksHand(Level level, BlockPos pos, Player player) {
-        int experienceLevel = player.experienceLevel; // プレイヤーの経験値レベルを取得
-
         // スケールを経験値レベルに応じて設定
         int r = 25;
         // 破壊したブロックの周囲2ブロックを掘る
