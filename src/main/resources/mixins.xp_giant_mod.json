@@ -8,7 +8,7 @@
     "ItemEntityRendererMixin",
     "LivingEntityMixin",
     "EntityMixin",
-    "CreeperMixin"
+    "LivingEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

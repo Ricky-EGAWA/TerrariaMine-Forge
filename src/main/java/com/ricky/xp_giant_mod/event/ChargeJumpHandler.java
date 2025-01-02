@@ -1,5 +1,6 @@
 package com.ricky.xp_giant_mod.event;
 
+import com.ricky.xp_giant_mod.ScaleManager;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
@@ -23,14 +24,14 @@ import java.util.Map;
 @Mod.EventBusSubscriber(modid = "xp_giant_mod")
 public class ChargeJumpHandler {
     // クリーパーが潰れた状態の記録 (タイムスタンプを保持)
-    private static Map<Creeper, Long> flattenedCreepers = new HashMap<>();
+    private static Map<LivingEntity, Long> flattenedMobs = new HashMap<>();
     // 着地地点を追跡するための変数
     public static double landingX = 0;
     public static double landingY = 0;
     public static double landingZ = 0;
 
     // 10秒間潰れた状態を維持
-    private static final long FLATTEN_TIME = 10000L;  // 10秒
+    private static final long FLATTEN_DURATION = 10000L;  // 10秒
 
     //jump meter
     private static ServerBossEvent bossBar = new ServerBossEvent(
@@ -73,19 +74,19 @@ public class ChargeJumpHandler {
         }
     }
 
-    // クリーパーが潰れた状態を更新
-    public static void setCreeperFlattened(Creeper creeper) {
-        flattenedCreepers.put(creeper, System.currentTimeMillis());
-    }
 
-    // クリーパーが潰れた状態かどうかを確認
-    public static boolean isCreeperFlattened(Creeper creeper) {
-        if (flattenedCreepers.containsKey(creeper)) {
-            long timeElapsed = System.currentTimeMillis() - flattenedCreepers.get(creeper);
-            if (timeElapsed <= FLATTEN_TIME) {
-                return true; // 潰れた状態を維持
+    // モブを潰れた状態に設定
+    public static void setMobFlattened(LivingEntity mob) {
+        flattenedMobs.put(mob, System.currentTimeMillis());
+    }
+    // モブが潰れた状態かを確認
+    public static boolean isMobFlattened(LivingEntity mob) {
+        if (flattenedMobs.containsKey(mob)) {
+            long elapsedTime = System.currentTimeMillis() - flattenedMobs.get(mob);
+            if (elapsedTime <= FLATTEN_DURATION) {
+                return true;
             } else {
-                flattenedCreepers.remove(creeper); // 10秒経過後は元に戻す
+                flattenedMobs.remove(mob); // 時間経過で解除
                 return false;
             }
         }
@@ -104,7 +105,7 @@ public class ChargeJumpHandler {
 
         // スニーク状態を検出
         if (serverPlayer.isCrouching()) {
-            if (!isPlayerInBossBar) {
+            if (!isPlayerInBossBar && player.experienceLevel >= 1) {
                 System.out.println("Adding player to boss bar");
                 bossBar.addPlayer(serverPlayer); // プレイヤーにボスバーを表示
             }
@@ -130,8 +131,11 @@ public class ChargeJumpHandler {
 
 
     private static void createExplosionEffect(LivingEntity attacker) {
+        // 共通クラスを使用してスケールを取得
+        Player player = (Player) attacker;
+        float scale = ScaleManager.getScaleForPlayer(player);
         // 爆風の範囲を設定
-        float explosionRadius = 3.0f;  // 半径はfloat型にする
+        float explosionRadius = 5.0f*scale;  // 半径はfloat型にする
         AABB explosionArea = new AABB(
                 attacker.getX() - explosionRadius, attacker.getY() - explosionRadius, attacker.getZ() - explosionRadius,
                 attacker.getX() + explosionRadius, attacker.getY() + explosionRadius, attacker.getZ() + explosionRadius
@@ -145,6 +149,9 @@ public class ChargeJumpHandler {
         DamageSources damageSources = level.damageSources();
         // 各エンティティにダメージとノックバックを適用
         for (LivingEntity entity : entities) {
+            if(player.experienceLevel>=20){
+                ChargeJumpHandler.setMobFlattened(entity); // モブを潰れた状態に設定
+            }
             // ダメージを適用
             DamageSource damageSource = damageSources.magic();
             entity.hurt(damageSource, 4.0F);
