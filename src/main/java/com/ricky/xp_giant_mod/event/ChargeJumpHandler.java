@@ -1,6 +1,7 @@
 package com.ricky.xp_giant_mod.event;
 
 import com.ricky.xp_giant_mod.ScaleManager;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
@@ -10,6 +11,9 @@ import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -62,8 +66,35 @@ public class ChargeJumpHandler {
                 landingY = player.getY();
                 landingZ = player.getZ();
             }
-            System.out.println("Super Jump fall detected!");
             if (player.fallDistance > 0) {
+                //着地時に範囲破壊
+                if(player.experienceLevel>=60){
+                    BlockPos pos = player.getOnPos();
+                    Level level = player.level();
+                    for (int x = -40; x <= 40; x++) {
+                        for (int y = -25; y <= 25; y++) {
+                            for (int z = -40; z <= 40; z++) {
+                                BlockPos offsetPos = pos.offset(x, y, z);
+                                BlockState state = level.getBlockState(offsetPos);
+                                // 周囲のブロックが破壊可能なものであれば、破壊処理を行う
+                                if (!state.isAir() && state.getBlock() != Blocks.BEDROCK) {
+                                    Block block = state.getBlock();
+                                    if (block == Blocks.IRON_ORE || block == Blocks.GOLD_ORE || block == Blocks.DIAMOND_ORE ||
+                                            block == Blocks.COAL_ORE || block == Blocks.LAPIS_ORE || block == Blocks.EMERALD_ORE ||
+                                            block == Blocks.REDSTONE_ORE || block == Blocks.NETHER_QUARTZ_ORE || block == Blocks.ANCIENT_DEBRIS
+                                            ||block == Blocks.DEEPSLATE_IRON_ORE || block == Blocks.DEEPSLATE_GOLD_ORE ||
+                                            block == Blocks.DEEPSLATE_DIAMOND_ORE || block == Blocks.DEEPSLATE_COAL_ORE ||
+                                            block == Blocks.DEEPSLATE_LAPIS_ORE || block == Blocks.DEEPSLATE_EMERALD_ORE ||
+                                            block == Blocks.DEEPSLATE_REDSTONE_ORE) {
+                                        level.destroyBlock(offsetPos, true, player);
+                                    }else{
+                                        level.destroyBlock(offsetPos, false, player);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 event.setCanceled(true); // 落下ダメージ無効化
                 player.fallDistance = 0.0f; // 落下ダメージ無効化後、落下距離をリセット
                 if (player.onGround()){
