@@ -7,6 +7,7 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -16,8 +17,21 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Mod.EventBusSubscriber(modid = "xp_giant_mod")
 public class ChargeJumpHandler {
+    // クリーパーが潰れた状態の記録 (タイムスタンプを保持)
+    private static Map<Creeper, Long> flattenedCreepers = new HashMap<>();
+    // 着地地点を追跡するための変数
+    public static double landingX = 0;
+    public static double landingY = 0;
+    public static double landingZ = 0;
+
+    // 10秒間潰れた状態を維持
+    private static final long FLATTEN_TIME = 10000L;  // 10秒
+
     //jump meter
     private static ServerBossEvent bossBar = new ServerBossEvent(
             Component.translatable("bar.charge_jump"), // ボスバーの名前
@@ -43,6 +57,10 @@ public class ChargeJumpHandler {
                 //爆風
                 // 爆風の効果を発生させる
                 createExplosionEffect(player);
+                // 着地地点を保存
+                landingX = player.getX();
+                landingY = player.getY();
+                landingZ = player.getZ();
             }
             System.out.println("Super Jump fall detected!");
             if (player.fallDistance > 0) {
@@ -53,6 +71,25 @@ public class ChargeJumpHandler {
                 }
             }
         }
+    }
+
+    // クリーパーが潰れた状態を更新
+    public static void setCreeperFlattened(Creeper creeper) {
+        flattenedCreepers.put(creeper, System.currentTimeMillis());
+    }
+
+    // クリーパーが潰れた状態かどうかを確認
+    public static boolean isCreeperFlattened(Creeper creeper) {
+        if (flattenedCreepers.containsKey(creeper)) {
+            long timeElapsed = System.currentTimeMillis() - flattenedCreepers.get(creeper);
+            if (timeElapsed <= FLATTEN_TIME) {
+                return true; // 潰れた状態を維持
+            } else {
+                flattenedCreepers.remove(creeper); // 10秒経過後は元に戻す
+                return false;
+            }
+        }
+        return false;
     }
 
     @SubscribeEvent
