@@ -27,11 +27,11 @@ public abstract class LivingEntityMixin {
             // カスタマイズしたジャンプ力の計算
             int chargeJump = 1;
             if (ChargeJumpHandler.canChargeJump){
-                chargeJump = 10;
+                chargeJump = 4;
                 System.out.println("Super Jump Detected!");
                 ChargeJumpHandler.setSuperJumping(true);
             }
-            float modified = 0.42F * blockJumpFactor * scale *chargeJump + jumpBoostPower;
+            float modified = 0.42F * blockJumpFactor *chargeJump + jumpBoostPower + scale/10;
             cir.setReturnValue(modified);
         }
     }

@@ -64,7 +64,7 @@ public class PlayerBoundingBoxHandler {
     private static void applyScaleAttributes(Player player, float scale) {
         // 移動速度を変更
         player.getAttribute(Attributes.MOVEMENT_SPEED)
-                .setBaseValue(0.1F * scale); // デフォルト速度 0.1 にスケールを乗じる TODO しゃがみなどの移動速度調整
+                .setBaseValue(0.1F + scale/10);
 
 
         // リーチ距離を変更

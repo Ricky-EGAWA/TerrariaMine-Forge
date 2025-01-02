@@ -1,6 +1,7 @@
 package com.ricky.xp_giant_mod;
 
 import com.mojang.logging.LogUtils;
+import com.ricky.xp_giant_mod.effect.ModEffects;
 import com.ricky.xp_giant_mod.event.BlockBreakHandler;
 import com.ricky.xp_giant_mod.item.ModCreativeModTabs;
 import com.ricky.xp_giant_mod.item.ModItems;
@@ -38,6 +39,8 @@ public class XPGiantMod {
 
         // BlockBreakHandlerの登録
         MinecraftForge.EVENT_BUS.register(BlockBreakHandler.class);
+
+        ModEffects.EFFECTS.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
