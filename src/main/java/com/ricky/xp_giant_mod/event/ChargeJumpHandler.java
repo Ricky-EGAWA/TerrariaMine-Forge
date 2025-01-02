@@ -1,6 +1,9 @@
 package com.ricky.xp_giant_mod.event;
 
-import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +18,12 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = "xp_giant_mod")
 public class ChargeJumpHandler {
+    //jump meter
+    private static ServerBossEvent bossBar = new ServerBossEvent(
+            Component.translatable("bar.charge_jump"), // ボスバーの名前
+            BossEvent.BossBarColor.BLUE, // ボスバーの色
+            BossEvent.BossBarOverlay.PROGRESS // ボスバーのオーバーレイ
+    );
 
     private static final int MAX_CHARGE_TIME = 100; // 最大チャージ時間（例：5秒）
 
@@ -50,23 +59,39 @@ public class ChargeJumpHandler {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         Player player = event.player;
 
+        // サーバーサイドでのみ動作
+        if (player.level().isClientSide || !(player instanceof ServerPlayer serverPlayer)) return;
 
-        // クライアントサイドのみで動作
-        if (event.phase != TickEvent.Phase.START || !(player instanceof LocalPlayer)) return;
-
-        LocalPlayer localPlayer = (LocalPlayer) player;
+        // プレイヤーがボスバーに追加されているかを確認
+        boolean isPlayerInBossBar = bossBar.getPlayers().contains(serverPlayer);
 
         // スニーク状態を検出
-        if (localPlayer.isCrouching()) { // スニーク中のチャージ
+        if (serverPlayer.isCrouching()) {
+            if (!isPlayerInBossBar) {
+                System.out.println("Adding player to boss bar");
+                bossBar.addPlayer(serverPlayer); // プレイヤーにボスバーを表示
+            }
+
             chargeTime++;
+
+            float progress = Math.min(1.0f, (float) chargeTime / MAX_CHARGE_TIME);
+            bossBar.setProgress(progress);
+
             if (chargeTime >= MAX_CHARGE_TIME) {
                 canChargeJump = true; // 最大チャージに達した
             }
         } else {
+            // チャージが終了したらボスバーを非表示にし、チャージをリセット
+            if (isPlayerInBossBar) {
+                System.out.println("Removing player from boss bar");
+                bossBar.removePlayer(serverPlayer);
+            }
             chargeTime = 0;
             canChargeJump = false;
         }
     }
+
+
     private static void createExplosionEffect(LivingEntity attacker) {
         // 爆風の範囲を設定
         float explosionRadius = 3.0f;  // 半径はfloat型にする
@@ -102,6 +127,5 @@ public class ChargeJumpHandler {
         // 爆発のパーティクルを表示 (視覚効果のみ)
         level.explode(null, attacker.getX(), attacker.getY(), attacker.getZ(), 0.0F, Level.ExplosionInteraction.NONE);
     }
-
 
 }
