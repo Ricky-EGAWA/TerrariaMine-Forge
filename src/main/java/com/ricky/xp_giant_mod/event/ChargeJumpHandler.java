@@ -141,7 +141,7 @@ public class ChargeJumpHandler {
 
             chargeTime++;
 
-            float progress = Math.min(1.0f, (float) chargeTime / MAX_CHARGE_TIME);
+            float progress = (float) chargeTime / MAX_CHARGE_TIME;
             bossBar.setProgress(progress);
 
             if (chargeTime >= MAX_CHARGE_TIME) {
