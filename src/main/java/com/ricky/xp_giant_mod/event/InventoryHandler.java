@@ -43,7 +43,7 @@ public class InventoryHandler {
                     if (stack.getItem() instanceof XPItem) {
                         player.getInventory().removeItem(i, stack.getCount());
                         // プレイヤーのレベルを10上げる
-                        player.giveExperienceLevels(10);
+                        player.giveExperienceLevels(10-(player.experienceLevel%10));
                         break;
                     }
                 }
@@ -66,9 +66,9 @@ public class InventoryHandler {
                         player.getInventory().removeItem(i, stack.getCount());
                         // プレイヤーのレベルを10上げる
                         if (player.experienceLevel<5){
-                            player.giveExperienceLevels(4);
+                            player.giveExperienceLevels(5-player.experienceLevel);
                         }else{
-                            player.giveExperienceLevels(5);
+                            player.giveExperienceLevels(10-player.experienceLevel);
                         }
                         break;
                     }

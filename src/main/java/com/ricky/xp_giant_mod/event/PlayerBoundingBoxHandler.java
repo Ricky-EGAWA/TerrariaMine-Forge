@@ -58,13 +58,13 @@ public class PlayerBoundingBoxHandler {
             player.setBoundingBox(newBox);
             // スケールに応じた属性を設定
             applyScaleAttributes(player, scale);
-            player.refreshDimensions();  // ここで寸法を再計算
+//            player.refreshDimensions();  // これを使うと目線の更新が行われるがヒットボックスがデフォルトのままになってしまう
         }
     }
     private static void applyScaleAttributes(Player player, float scale) {
         // 移動速度を変更
         player.getAttribute(Attributes.MOVEMENT_SPEED)
-                .setBaseValue(0.1F + scale/10);
+                .setBaseValue(0.1F + scale/20);
 
 
         // リーチ距離を変更
