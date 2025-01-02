@@ -8,7 +8,6 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageSources;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
@@ -106,7 +105,6 @@ public class ChargeJumpHandler {
         // スニーク状態を検出
         if (serverPlayer.isCrouching()) {
             if (!isPlayerInBossBar && player.experienceLevel >= 1) {
-                System.out.println("Adding player to boss bar");
                 bossBar.addPlayer(serverPlayer); // プレイヤーにボスバーを表示
             }
 
@@ -121,7 +119,6 @@ public class ChargeJumpHandler {
         } else {
             // チャージが終了したらボスバーを非表示にし、チャージをリセット
             if (isPlayerInBossBar) {
-                System.out.println("Removing player from boss bar");
                 bossBar.removePlayer(serverPlayer);
             }
             chargeTime = 0;

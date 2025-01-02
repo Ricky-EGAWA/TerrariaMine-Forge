@@ -18,7 +18,6 @@ public class PlayerBoundingBoxHandler {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             Player player = event.player;
-            int experienceLevel = player.experienceLevel; // プレイヤーの経験値レベルを取得
 
             // 共通クラスを使用してスケールを取得
             float scale = ScaleManager.getScaleForPlayer(player);
@@ -59,6 +58,7 @@ public class PlayerBoundingBoxHandler {
             player.setBoundingBox(newBox);
             // スケールに応じた属性を設定
             applyScaleAttributes(player, scale);
+            player.refreshDimensions();  // ここで寸法を再計算
         }
     }
     private static void applyScaleAttributes(Player player, float scale) {

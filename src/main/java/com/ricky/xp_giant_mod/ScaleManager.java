@@ -8,27 +8,27 @@ public class ScaleManager {
 
         if (experienceLevel == 0) {
             return 0.25f;
-        } else if (experienceLevel == 1) {
+        } else if (experienceLevel < 5) {
             return 0.5f;
-        } else if (experienceLevel <= 5) {
+        } else if (experienceLevel < 10) {
             return 1.0f;
-        } else if (experienceLevel <= 10) {
+        } else if (experienceLevel < 20) {
             return 2.5f;
-        } else if (experienceLevel <= 20) {
+        } else if (experienceLevel < 30) {
             return 5.0f;
-        } else if (experienceLevel <= 30) {
+        } else if (experienceLevel < 40) {
             return 6.0f;
-        } else if (experienceLevel <= 40) {
+        } else if (experienceLevel < 50) {
             return 10.0f;
-        } else if (experienceLevel <= 50) {
+        } else if (experienceLevel < 60) {
             return 12.5f;
-        } else if (experienceLevel <= 60) {
+        } else if (experienceLevel < 70) {
             return 15.0f;
-        } else if (experienceLevel <= 70) {
+        } else if (experienceLevel < 80) {
             return 20.0f;
-        } else if (experienceLevel <= 80) {
+        } else if (experienceLevel < 90) {
             return 25.0f;
-        } else if (experienceLevel <= 90) {
+        } else if (experienceLevel < 100) {
             return 30.0f;
         } else {
             return 32.5f; // レベル100を超える場合の最大スケール
