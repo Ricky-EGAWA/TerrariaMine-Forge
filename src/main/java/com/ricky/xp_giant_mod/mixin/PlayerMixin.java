@@ -1,5 +1,6 @@
 package com.ricky.xp_giant_mod.mixin;
 
+import com.ricky.xp_giant_mod.ScaleManager;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.player.Player;
@@ -17,19 +18,8 @@ public abstract class PlayerMixin {
         // EyeHeightを設定 (例: 目の高さを1.5Fに変更)
         // プレイヤーの経験値レベルを取得
         Player player = (Player) (Object) this;
-        int experienceLevel = player.experienceLevel;
-
-        // スケールを経験値レベルに応じて設定
-        float scale;//TODO scale
-        if (experienceLevel <= 5) {
-            scale = 1.0f;
-        } else if (experienceLevel <= 10) {
-            scale = 2.5f;
-        } else if (experienceLevel <= 20) {
-            scale = 5.0f;
-        } else {
-            scale = 7.5f; // レベル20を超える場合は任意で設定（例: 7.5）
-        }
+        // 共通クラスを使用してスケールを取得
+        float scale = ScaleManager.getScaleForPlayer(player);
         switch (pPose) {
             case SWIMMING:
             case FALL_FLYING:

@@ -1,5 +1,6 @@
 package com.ricky.xp_giant_mod.event;
 
+import com.ricky.xp_giant_mod.ScaleManager;
 import com.ricky.xp_giant_mod.XPGiantMod;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -19,17 +20,8 @@ public class PlayerBoundingBoxHandler {
             Player player = event.player;
             int experienceLevel = player.experienceLevel; // プレイヤーの経験値レベルを取得
 
-            // スケールを経験値レベルに応じて設定
-            float scale;//TODO scale
-            if (experienceLevel <= 5) {
-                scale = 1.0f;
-            } else if (experienceLevel <= 10) {
-                scale = 2.5f;
-            } else if (experienceLevel <= 20) {
-                scale = 5.0f;
-            } else {
-                scale = 7.5f; // レベル20を超える場合のスケール
-            }
+            // 共通クラスを使用してスケールを取得
+            float scale = ScaleManager.getScaleForPlayer(player);
 
             // 現在のポーズを取得
             Pose currentPose = player.getPose();
