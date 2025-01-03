@@ -89,8 +89,9 @@ public class ChargeJumpHandler {
             if (!isPlayerInBossBar && player.experienceLevel >= 1) {
                 bossBar.addPlayer(serverPlayer); // プレイヤーにボスバーを表示
             }
-
-            chargeTime++;
+            if(chargeTime<MAX_CHARGE_TIME){
+                chargeTime++;
+            }
 
             float progress = (float) chargeTime / MAX_CHARGE_TIME;
             bossBar.setProgress(progress);

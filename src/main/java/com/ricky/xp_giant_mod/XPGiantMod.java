@@ -1,7 +1,6 @@
 package com.ricky.xp_giant_mod;
 
 import com.mojang.logging.LogUtils;
-import com.ricky.xp_giant_mod.effect.ModEffects;
 import com.ricky.xp_giant_mod.event.BlockBreakHandler;
 import com.ricky.xp_giant_mod.item.ModCreativeModTabs;
 import com.ricky.xp_giant_mod.item.ModItems;
