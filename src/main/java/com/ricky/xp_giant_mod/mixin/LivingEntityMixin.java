@@ -45,11 +45,12 @@ public abstract class LivingEntityMixin {
 
             // カスタム落下ダメージ計算
             float adjustedFallDistance = pFallDistance - (3.0F + scale / 3.0F); // 基準高度を差し引く
-            if (adjustedFallDistance > 0) {
+            if (adjustedFallDistance > 0 && !ChargeJumpHandler.isSuperJumping) {
                 float damage = adjustedFallDistance * pMultiplier * (1.0F + scale / 10.0F); // スケールに基づく調整
                 player.hurt(player.damageSources().fall(), damage); // カスタムダメージ適用
                 cir.setReturnValue(true);
             } else {
+                ChargeJumpHandler.landing(player);
                 cir.setReturnValue(false); // ダメージなし
             }
         }

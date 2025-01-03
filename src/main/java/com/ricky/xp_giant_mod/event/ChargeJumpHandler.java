@@ -48,60 +48,17 @@ public class ChargeJumpHandler {
     private static int chargeTime = 0;
     public static boolean canChargeJump = false;
     public static boolean isSuperJumping = false;
-    public static boolean finish = false;
     public static void setSuperJumping(boolean value) {
         isSuperJumping = value;
     }
-    @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void onFall(LivingFallEvent event) {
-        if (event.getEntity() instanceof Player player && isSuperJumping) {
-            if (finish){
-                isSuperJumping = false; // 着地後にスーパージャンプを終了
-                finish = false;
-                //爆風
-                // 爆風の効果を発生させる
-                createExplosionEffect(player);
-                // 着地地点を保存
-                landingX = player.getX();
-                landingY = player.getY();
-                landingZ = player.getZ();
-            }
-            if (player.fallDistance > 0) {
-                //着地時に範囲破壊
-                if(player.experienceLevel>=60){
-                    BlockPos pos = player.getOnPos();
-                    Level level = player.level();
-                    for (int x = -40; x <= 40; x++) {
-                        for (int y = -25; y <= 25; y++) {
-                            for (int z = -40; z <= 40; z++) {
-                                BlockPos offsetPos = pos.offset(x, y, z);
-                                BlockState state = level.getBlockState(offsetPos);
-                                // 周囲のブロックが破壊可能なものであれば、破壊処理を行う
-                                if (!state.isAir() && state.getBlock() != Blocks.BEDROCK) {
-                                    Block block = state.getBlock();
-                                    if (block == Blocks.IRON_ORE || block == Blocks.GOLD_ORE || block == Blocks.DIAMOND_ORE ||
-                                            block == Blocks.COAL_ORE || block == Blocks.LAPIS_ORE || block == Blocks.EMERALD_ORE ||
-                                            block == Blocks.REDSTONE_ORE || block == Blocks.NETHER_QUARTZ_ORE || block == Blocks.ANCIENT_DEBRIS
-                                            ||block == Blocks.DEEPSLATE_IRON_ORE || block == Blocks.DEEPSLATE_GOLD_ORE ||
-                                            block == Blocks.DEEPSLATE_DIAMOND_ORE || block == Blocks.DEEPSLATE_COAL_ORE ||
-                                            block == Blocks.DEEPSLATE_LAPIS_ORE || block == Blocks.DEEPSLATE_EMERALD_ORE ||
-                                            block == Blocks.DEEPSLATE_REDSTONE_ORE) {
-                                        level.destroyBlock(offsetPos, true, player);
-                                    }else{
-                                        level.destroyBlock(offsetPos, false, player);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                event.setCanceled(true); // 落下ダメージ無効化
-                player.fallDistance = 0.0f; // 落下ダメージ無効化後、落下距離をリセット
-                if (player.onGround()){
-                    finish = true;
-                }
-            }
-        }
+
+    public static void landing(Player player){
+        // 爆風の効果を発生させる
+        createExplosionEffect(player);
+        // 着地地点を保存
+        landingX = player.getX();
+        landingY = player.getY();
+        landingZ = player.getZ();
     }
 
 

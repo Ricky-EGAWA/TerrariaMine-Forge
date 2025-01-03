@@ -40,7 +40,7 @@ public class XPGiantMod {
         // BlockBreakHandlerの登録
         MinecraftForge.EVENT_BUS.register(BlockBreakHandler.class);
 
-        ModEffects.EFFECTS.register(modEventBus);
+//        ModEffects.EFFECTS.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
