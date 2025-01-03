@@ -1,9 +1,12 @@
 package com.ricky.xp_giant_mod;
 
 import com.mojang.logging.LogUtils;
+import com.ricky.xp_giant_mod.entity.ModEntities;
+import com.ricky.xp_giant_mod.entity.client.GiantZombieRenderer;
 import com.ricky.xp_giant_mod.event.BlockBreakHandler;
 import com.ricky.xp_giant_mod.item.ModCreativeModTabs;
 import com.ricky.xp_giant_mod.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,7 +42,7 @@ public class XPGiantMod {
         // BlockBreakHandlerの登録
         MinecraftForge.EVENT_BUS.register(BlockBreakHandler.class);
 
-//        ModEffects.EFFECTS.register(modEventBus);
+        ModEntities.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -59,7 +62,7 @@ public class XPGiantMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            
+            EntityRenderers.register(ModEntities.GIANT_ZOMBIE.get(), GiantZombieRenderer::new);
         }
     }
 }
