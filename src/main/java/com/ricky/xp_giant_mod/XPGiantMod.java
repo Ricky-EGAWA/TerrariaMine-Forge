@@ -53,7 +53,9 @@ public class XPGiantMod {
 
     //クリエイティブタブに追加
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            event.accept(ModItems.GIANT_RAVAGER_SPAWN_EGG);
+            event.accept(ModItems.GIANT_ZOMBIE_SPAWN_EGG);
         }
     }
 

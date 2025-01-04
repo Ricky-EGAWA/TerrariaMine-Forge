@@ -98,6 +98,8 @@ public class LogBreakHandler {
             BlockPos pos = event.getPos();
             ItemStack xpItemStack = new ItemStack(ModItems.XP.get());
             player.level().addFreshEntity(new ItemEntity(player.level(), pos.getX(), pos.getY(), pos.getZ(), xpItemStack));
+            ItemStack xpItemStack2 = new ItemStack(ModItems.GIANT_ZOMBIE_SPAWN_EGG.get());
+            player.level().addFreshEntity(new ItemEntity(player.level(), pos.getX(), pos.getY(), pos.getZ(), xpItemStack2));
         }
     }
 }
