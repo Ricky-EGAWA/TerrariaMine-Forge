@@ -71,6 +71,9 @@ public class PlayerBoundingBoxHandler {
         player.getAttribute(ForgeMod.BLOCK_REACH.get())
                 .setBaseValue(4.5F * scale); // デフォルトリーチ距離 4.5 にスケールを乗じる
 
+        player.getAttribute(ForgeMod.ENTITY_REACH.get())
+                .setBaseValue(3 * scale);
+
         int experienceLevel = player.experienceLevel;
 
         // 攻撃力
