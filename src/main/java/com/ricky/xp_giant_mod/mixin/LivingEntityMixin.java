@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Player;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
@@ -50,8 +49,10 @@ public abstract class LivingEntityMixin {
                 player.hurt(player.damageSources().fall(), damage); // カスタムダメージ適用
                 cir.setReturnValue(true);
             } else {
-                ChargeJumpHandler.landing(player);
                 cir.setReturnValue(false); // ダメージなし
+                if (ChargeJumpHandler.isSuperJumping){
+                    ChargeJumpHandler.landing(player);
+                }
             }
         }
     }

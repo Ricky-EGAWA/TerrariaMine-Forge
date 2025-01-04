@@ -2,6 +2,9 @@ package com.ricky.xp_giant_mod;
 
 import com.mojang.logging.LogUtils;
 import com.ricky.xp_giant_mod.entity.ModEntities;
+import com.ricky.xp_giant_mod.entity.client.GiantMummyRenderer;
+import com.ricky.xp_giant_mod.entity.client.GiantRavagerRenderer;
+import com.ricky.xp_giant_mod.entity.client.GiantVindicatorRenderer;
 import com.ricky.xp_giant_mod.entity.client.GiantZombieRenderer;
 import com.ricky.xp_giant_mod.event.BlockBreakHandler;
 import com.ricky.xp_giant_mod.item.ModCreativeModTabs;
@@ -63,6 +66,9 @@ public class XPGiantMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.GIANT_ZOMBIE.get(), GiantZombieRenderer::new);
+            EntityRenderers.register(ModEntities.GIANT_VINDICATOR.get(), GiantVindicatorRenderer::new);
+            EntityRenderers.register(ModEntities.GIANT_RAVAGER.get(), GiantRavagerRenderer::new);
+            EntityRenderers.register(ModEntities.GIANT_MUMMY.get(), GiantMummyRenderer::new);
         }
     }
 }
