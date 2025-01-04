@@ -1,3 +1,15 @@
 {
-  "item.xp_giant_mod.cobalt_ingot": "コバルトインゴット"
+  "item.xp_giant_mod.xp": "巨大経験値オーブ",
+  "item.xp_giant_mod.small_xp": "巨大経験値オーブ",
+  "item.xp_giant_mod.medium_xp": "巨大経験値オーブ",
+  "item.xp_giant_mod.giant_ravager_spawn_egg": "巨大ラベジャーのスポーンエッグ",
+  "item.xp_giant_mod.giant_zombie_spawn_egg": "巨大ゾンビのスポーンエッグ",
+  "creativetab.mod_item_tab": "Mod Items",
+
+  "entity.xp_giant_mod.giant_mummy": "巨大ミイラ",
+  "entity.xp_giant_mod.giant_vindicator": "巨大ヴィンディケーター",
+  "entity.xp_giant_mod.giant_ravager": "巨大ラベジャー",
+  "entity.xp_giant_mod.giant_zombie": "巨大ゾンビ",
+
+  "bar.charge_jump": "チャージジャンプ"
 }

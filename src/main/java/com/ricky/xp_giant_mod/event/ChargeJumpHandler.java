@@ -1,6 +1,7 @@
 package com.ricky.xp_giant_mod.event;
 
 import com.ricky.xp_giant_mod.ScaleManager;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
@@ -42,6 +43,9 @@ public class ChargeJumpHandler {
     private static int chargeTime = 0;
     public static boolean canChargeJump = false;
     public static boolean isSuperJumping = false;
+
+    private static boolean land = false;
+    private static int landCount = 0;
     public static void setSuperJumping(boolean value) {
         isSuperJumping = value;
     }
@@ -107,6 +111,14 @@ public class ChargeJumpHandler {
             chargeTime = 0;
             canChargeJump = false;
         }
+        if (land){
+            landCount++;
+            if (landCount==20){
+                isSuperJumping=false;
+                landCount=0;
+                land=false;
+            }
+        }
     }
 
 
@@ -149,7 +161,20 @@ public class ChargeJumpHandler {
         }
 
         // 爆発のパーティクルを表示 (視覚効果のみ)
-        level.explode(null, attacker.getX(), attacker.getY(), attacker.getZ(), 0.0F, Level.ExplosionInteraction.NONE);
+        // 爆発パーティクルのみを生成
+        int particleCount = (int) (explosionRadius * 20); // パーティクルの量を調整
+
+        for (int i = 0; i < particleCount; i++) {
+            double offsetX = (Math.random() - 0.5) * explosionRadius * 2;
+            double offsetY = (Math.random() - 0.5) * explosionRadius * 2;
+            double offsetZ = (Math.random() - 0.5) * explosionRadius * 2;
+            level.addParticle(ParticleTypes.EXPLOSION,
+                    attacker.getX() + offsetX,
+                    attacker.getY() + offsetY,
+                    attacker.getZ() + offsetZ,
+                    0, 0, 0);
+        }
+        land = true;
     }
 
 }

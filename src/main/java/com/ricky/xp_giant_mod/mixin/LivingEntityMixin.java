@@ -39,20 +39,27 @@ public abstract class LivingEntityMixin {
     @Inject(method = "causeFallDamage", at = @At("HEAD"), cancellable = true)
     private void modifyFallDamage(float pFallDistance, float pMultiplier, DamageSource pSource, CallbackInfoReturnable<Boolean> cir) {
         if ((Object) this instanceof Player player) {
-            // 共通クラスを使用してスケールを取得
-            float scale = ScaleManager.getScaleForPlayer(player);
+            // スーパージャンプ中の場合、落下ダメージを無効化
+            if (ChargeJumpHandler.isSuperJumping) {
+                System.out.println("Super jump detected, canceling fall damage.");
+                cir.setReturnValue(false); // 落下ダメージを発生させない
+                cir.cancel(); // デフォルト処理をスキップ
+                ChargeJumpHandler.landing(player);
+                return;
+            }
 
-            // カスタム落下ダメージ計算
-            float adjustedFallDistance = pFallDistance - (3.0F + scale / 3.0F); // 基準高度を差し引く
-            if (adjustedFallDistance > 0 && !ChargeJumpHandler.isSuperJumping) {
-                float damage = adjustedFallDistance * pMultiplier * (1.0F + scale / 10.0F); // スケールに基づく調整
-                player.hurt(player.damageSources().fall(), damage); // カスタムダメージ適用
-                cir.setReturnValue(true);
+            // 通常の落下ダメージ処理
+            float scale = ScaleManager.getScaleForPlayer(player);
+            float adjustedFallDistance = pFallDistance - (3.0F + scale / 3.0F); // 高さの調整
+
+            if (adjustedFallDistance > 0) {
+                float damage = adjustedFallDistance * pMultiplier * (1.0F + scale / 10.0F);
+                player.hurt(player.damageSources().fall(), damage); // カスタムダメージを適用
+                cir.setReturnValue(true); // 落下ダメージを適用
+                cir.cancel(); // デフォルト処理をスキップ
             } else {
                 cir.setReturnValue(false); // ダメージなし
-                if (ChargeJumpHandler.isSuperJumping){
-                    ChargeJumpHandler.landing(player);
-                }
+                cir.cancel(); // デフォルト処理をスキップ
             }
         }
     }
