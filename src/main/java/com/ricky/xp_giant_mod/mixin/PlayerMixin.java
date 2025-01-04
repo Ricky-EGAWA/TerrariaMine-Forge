@@ -34,4 +34,12 @@ public abstract class PlayerMixin {
                 break;
         }
     }
+    @Inject(method = "getDimensions", at = @At("HEAD"), cancellable = true)
+    public void modifyHitBox(Pose pPose, CallbackInfoReturnable<EntityDimensions> cir) {
+        float scale = ScaleManager.getScaleForPlayer((Player) (Object) this);
+        // スケールに応じたヒットボックスを設定
+        cir.setReturnValue(EntityDimensions.scalable(0.6F * scale, 1.8F * scale));
+        // デフォルトの動作をスキップ
+        cir.cancel();
+    }
 }

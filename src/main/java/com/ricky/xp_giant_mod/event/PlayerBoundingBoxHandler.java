@@ -58,7 +58,7 @@ public class PlayerBoundingBoxHandler {
             player.setBoundingBox(newBox);
             // スケールに応じた属性を設定
             applyScaleAttributes(player, scale);
-//            player.refreshDimensions();  // これを使うと目線の更新が行われるがヒットボックスがデフォルトのままになってしまう
+            player.refreshDimensions();  // これを使うと目線の更新が行われるがヒットボックスがデフォルトのままになってしまう
         }
     }
     private static void applyScaleAttributes(Player player, float scale) {
