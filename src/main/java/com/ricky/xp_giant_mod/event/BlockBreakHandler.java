@@ -87,7 +87,6 @@ public class BlockBreakHandler {
 
             playersWhoBrokePressure.add(player.getUUID());
             dropItem(level, pos, new ItemStack(ModItems.XP.get()));
-            dropItem(level, pos, new ItemStack(ModItems.GIANT_ZOMBIE_SPAWN_EGG.get()));
         }
     }
 

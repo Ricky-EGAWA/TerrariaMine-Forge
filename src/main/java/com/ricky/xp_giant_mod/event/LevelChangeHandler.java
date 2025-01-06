@@ -1,8 +1,13 @@
 package com.ricky.xp_giant_mod.event;
 
 import com.ricky.xp_giant_mod.XPGiantMod;
+import com.ricky.xp_giant_mod.item.ModItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -61,6 +66,9 @@ public class LevelChangeHandler {
                 System.out.println("level 80");
                 serverPlayer.sendSystemMessage(Component.literal("[レベル80] アンロック 体力増加"));
                 serverPlayer.sendSystemMessage(Component.literal("[レベル80] アンロック 攻撃力増加"));
+
+
+                dropItem(serverPlayer.level(), serverPlayer.getOnPos(), new ItemStack(ModItems.GIANT_ZOMBIE_SPAWN_EGG.get()));
             } else if (currentLevel == 90) {
                 System.out.println("level 90");
                 serverPlayer.sendSystemMessage(Component.literal("[レベル90] アンロック 攻撃力増加"));
@@ -69,6 +77,9 @@ public class LevelChangeHandler {
                 serverPlayer.sendSystemMessage(Component.literal("[レベル100]"));
             }
         }
+    }
+    private static void dropItem(Level level, BlockPos pos, ItemStack itemStack) {
+        level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), itemStack));
     }
 }
 
