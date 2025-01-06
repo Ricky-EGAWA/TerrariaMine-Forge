@@ -17,12 +17,12 @@ import java.util.UUID;
 public class LogBreakHandler {
 
     // プレイヤーごとの原木破壊済み状態を管理するセット
-    private static final HashSet<UUID> playersWhoBrokeLog = new HashSet<>();
-    private static final HashSet<UUID> playersWhoBrokeCoal = new HashSet<>();
-    private static final HashSet<UUID> playersWhoBrokeIron = new HashSet<>();
-    private static final HashSet<UUID> playersWhoBrokeDiamond = new HashSet<>();
-    private static final HashSet<UUID> playersWhoBrokeEmerald = new HashSet<>();
-    private static final HashSet<UUID> playersWhoBrokePressure = new HashSet<>();
+    public static final HashSet<UUID> playersWhoBrokeLog = new HashSet<>();
+    public static final HashSet<UUID> playersWhoBrokeCoal = new HashSet<>();
+    public static final HashSet<UUID> playersWhoBrokeIron = new HashSet<>();
+    public static final HashSet<UUID> playersWhoBrokeDiamond = new HashSet<>();
+    public static final HashSet<UUID> playersWhoBrokeEmerald = new HashSet<>();
+    public static final HashSet<UUID> playersWhoBrokePressure = new HashSet<>();
 
     @SubscribeEvent
     public static void onLogBreak(BlockEvent.BreakEvent event) {

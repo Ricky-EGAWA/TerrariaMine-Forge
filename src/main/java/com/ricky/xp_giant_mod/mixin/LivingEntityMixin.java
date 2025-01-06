@@ -29,7 +29,6 @@ public abstract class LivingEntityMixin {
             int chargeJump = 1;
             if (ChargeJumpHandler.canChargeJump){
                 chargeJump = 4;
-                System.out.println("Super Jump Detected!");
                 ChargeJumpHandler.setSuperJumping(true);
             }
             float modified = 0.42F * blockJumpFactor *chargeJump + jumpBoostPower + scale/20;
@@ -41,7 +40,6 @@ public abstract class LivingEntityMixin {
         if ((Object) this instanceof Player player) {
             // スーパージャンプ中の場合、落下ダメージを無効化
             if (ChargeJumpHandler.isSuperJumping) {
-                System.out.println("Super jump detected, canceling fall damage.");
                 cir.setReturnValue(false); // 落下ダメージを発生させない
                 cir.cancel(); // デフォルト処理をスキップ
                 ChargeJumpHandler.landing(player);
