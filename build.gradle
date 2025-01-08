@@ -61,9 +61,10 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation 'org.spongepowered:mixin:0.8.5'  // 依存関係も追加
 }
 mixin {
-    add sourceSets.main, 'mixins.mymod.refmap.json'
+    add sourceSets.main, 'mixins.xp_giant_mod.refmap.json'
     config 'mixins.xp_giant_mod.json'
     debug.verbose = true
     debug.export = true

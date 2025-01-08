@@ -17,7 +17,7 @@ public class InventoryHandler {
         if (event.phase != TickEvent.Phase.END) return; // ENDフェーズのみ処理
         Player player = event.player;
 
-        if (!player.level().isClientSide) { // サーバーサイドのみ処理
+        if (!player.level().isClientSide && !player.isCreative()) { // サーバーサイドのみ処理
             boolean hasXPItem = false;
             boolean hasSmallXPItem = false;
             boolean hasMediumXPItem = false;
