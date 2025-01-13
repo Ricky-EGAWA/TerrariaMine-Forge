@@ -1,9 +1,14 @@
 package com.ricky.chocolatemod;
 
 import com.mojang.logging.LogUtils;
+import com.ricky.chocolatemod.block.ModBlocks;
+import com.ricky.chocolatemod.block.milk.ModFluidTypes;
+import com.ricky.chocolatemod.block.milk.ModFluids;
 import com.ricky.chocolatemod.event.SneakHandler;
 import com.ricky.chocolatemod.item.ModCreativeModTabs;
 import com.ricky.chocolatemod.item.ModItems;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -26,6 +31,10 @@ public class ChocolateMod {
 
         ModCreativeModTabs.register(modEventBus);
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+        ModFluids.register(modEventBus);
+        ModFluidTypes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -49,7 +58,8 @@ public class ChocolateMod {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_MILK.get(), RenderType.solid());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_MILK.get(), RenderType.solid());
         }
     }
 }
