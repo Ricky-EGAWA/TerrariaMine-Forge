@@ -1,6 +1,7 @@
 package com.ricky.chocolatemod;
 
 import com.mojang.logging.LogUtils;
+import com.ricky.chocolatemod.event.SneakHandler;
 import com.ricky.chocolatemod.item.ModCreativeModTabs;
 import com.ricky.chocolatemod.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
@@ -29,6 +30,8 @@ public class ChocolateMod {
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+
+        new SneakHandler();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "M": {
+      "item": "minecraft:milk_bucket"
+    },
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    }
+  },
+  "pattern": [
+    "MC ",
+    "SS ",
+    "   "
+  ],
+  "result": {
+    "item": "chocolatemod:chocolate"
+  },
+  "show_notification": true
+}

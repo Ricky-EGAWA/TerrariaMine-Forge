@@ -18,6 +18,7 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creativetab.mod_item_tab"))
                     .displayItems((pParameters, pOutput) -> {
                         pOutput.accept(ModItems.CHOCOLATE.get());
+                        pOutput.accept(ModItems.ORE_PICKAXE.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {
