@@ -1,6 +1,7 @@
 package com.ricky.chocolatemod.item;
 
 import com.ricky.chocolatemod.ChocolateMod;
+import com.ricky.chocolatemod.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,6 +22,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.ORE_PICKAXE.get());
                         pOutput.accept(ModItems.CHOCOLATE_SWORD.get());
                         pOutput.accept(ModItems.CHOCOLATE_SLINGSHOT.get());
+                        pOutput.accept(ModBlocks.CHOCOLATE_BLOCK.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

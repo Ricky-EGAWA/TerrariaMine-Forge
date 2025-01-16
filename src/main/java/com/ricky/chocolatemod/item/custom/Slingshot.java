@@ -1,6 +1,5 @@
 package com.ricky.chocolatemod.item.custom;
 
-import com.ricky.chocolatemod.entity.ModEntities;
 import com.ricky.chocolatemod.entity.projectile.MyArrowEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -9,6 +8,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import org.jetbrains.annotations.NotNull;
 
 public class Slingshot extends BowItem {
     private static final Properties pProperties = new Properties();
@@ -18,7 +18,7 @@ public class Slingshot extends BowItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
+    public void releaseUsing(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pEntityLiving, int pTimeLeft) {
         if (pEntityLiving instanceof Player player) {
             System.out.println("shoot");
 
