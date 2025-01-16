@@ -20,6 +20,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.CHOCOLATE.get());
                         pOutput.accept(ModItems.ORE_PICKAXE.get());
                         pOutput.accept(ModItems.CHOCOLATE_SWORD.get());
+                        pOutput.accept(ModItems.CHOCOLATE_SLINGSHOT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

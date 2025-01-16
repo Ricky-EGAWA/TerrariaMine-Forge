@@ -4,11 +4,14 @@ import com.mojang.logging.LogUtils;
 import com.ricky.chocolatemod.block.ModBlocks;
 import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
+import com.ricky.chocolatemod.entity.ModEntities;
+import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
 import com.ricky.chocolatemod.event.SneakHandler;
 import com.ricky.chocolatemod.item.ModCreativeModTabs;
 import com.ricky.chocolatemod.item.ModItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -41,6 +44,8 @@ public class ChocolateMod {
         modEventBus.addListener(this::addCreative);
 
         new SneakHandler();
+        // エンティティの登録
+        ModEntities.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -60,6 +65,9 @@ public class ChocolateMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
             ItemBlockRenderTypes.setRenderLayer(ModFluids.SOURCE_MILK.get(), RenderType.solid());
             ItemBlockRenderTypes.setRenderLayer(ModFluids.FLOWING_MILK.get(), RenderType.solid());
+
+            // クライアント側のセットアップでレンダラーを登録
+            EntityRenderers.register(ModEntities.MY_ARROW.get(), MyArrowRenderer::new);
         }
     }
 }
