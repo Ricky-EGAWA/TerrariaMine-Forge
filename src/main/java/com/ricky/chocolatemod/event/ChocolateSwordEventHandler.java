@@ -27,9 +27,9 @@ public class ChocolateSwordEventHandler {
             for (int i = 1; i <= 10; i++) {
                 for (int x = -2; x <= 2; x++) {
                     BlockPos targetPos = startPos.offset((int)(direction.x * i + x), (int)(direction.y * i), (int)(direction.z * i));
-                    ChangeChocolate.change(level, targetPos, true);
+                    ChangeChocolate.change(level, targetPos, false);
                     BlockPos targetPos2 = startPos.offset((int)(direction.x * i + x), (int)(direction.y * i)+1, (int)(direction.z * i));
-                    ChangeChocolate.change(level, targetPos2, true);
+                    ChangeChocolate.change(level, targetPos2, false);
                 }
             }
         }

@@ -1,10 +1,7 @@
 package com.ricky.chocolatemod.item;
 
 import com.ricky.chocolatemod.ChocolateMod;
-import com.ricky.chocolatemod.item.custom.ChocolateBomb;
-import com.ricky.chocolatemod.item.custom.ChocolateSword;
-import com.ricky.chocolatemod.item.custom.OrePickaxe;
-import com.ricky.chocolatemod.item.custom.Slingshot;
+import com.ricky.chocolatemod.item.custom.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -24,6 +21,8 @@ public class ModItems {
             Slingshot::new);
     public static final RegistryObject<Item> CHOCOLATE_BOMB = ITEMS.register("chocolate_bomb",
             () -> new ChocolateBomb(new Item.Properties()));
+    public static final RegistryObject<Item> HEALER = ITEMS.register("healer",
+            () -> new Healer(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

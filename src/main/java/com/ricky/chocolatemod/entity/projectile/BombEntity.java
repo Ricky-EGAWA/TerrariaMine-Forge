@@ -11,7 +11,6 @@ import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
-import org.jetbrains.annotations.NotNull;
 
 public class BombEntity extends ThrowableItemProjectile {
     public BombEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
@@ -28,7 +27,7 @@ public class BombEntity extends ThrowableItemProjectile {
     }
 
     @Override
-    protected void onHitBlock(@NotNull BlockHitResult pResult) {
+    protected void onHitBlock(BlockHitResult pResult) {
         if (!this.level().isClientSide()) {
             BlockPos impactPos = pResult.getBlockPos();
             Level level = this.level();
@@ -39,7 +38,7 @@ public class BombEntity extends ThrowableItemProjectile {
                 for (int y = -explosionRadius; y <= explosionRadius; y++) {
                     for (int z = -explosionRadius; z <= explosionRadius; z++) {
                         BlockPos nearbyPos = impactPos.offset(x, y, z);
-                        ChangeChocolate.change(level, nearbyPos, true);
+                        ChangeChocolate.change(level, nearbyPos, false);
                     }
                 }
             }
@@ -48,7 +47,7 @@ public class BombEntity extends ThrowableItemProjectile {
                     .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 24.0F)); // ハート12個分のダメージ
 
             // ハートのパーティクルを爆発地点に表示
-            int particleCount = (int) (explosionRadius * 20); // パーティクルの量を調整
+            int particleCount = explosionRadius * 20; // パーティクルの量を調整
 
             for (int i = 0; i < particleCount; i++) {//TODO ハートのエフェクトが表示されていない　爆発サウンドを追加
                 double offsetX = (Math.random() - 0.5) * explosionRadius * 2;
