@@ -1,5 +1,6 @@
 package com.ricky.chocolatemod.util;
 
+import com.ricky.chocolatemod.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -10,11 +11,11 @@ public class ChangeChocolate {
         BlockState targetState = level.getBlockState(blockPos);
         if(h){ //腐敗したブロックを置き換え可能
             if (!targetState.isAir() && !(targetState.getBlock() == Blocks.BEDROCK)){
-                level.setBlock(blockPos, Blocks.GOLD_BLOCK.defaultBlockState(), 3);
+                level.setBlock(blockPos, ModBlocks.CHOCOLATE_BLOCK.get().defaultBlockState(), 3);
             }
         }else {//腐敗したブロックを置き換えられない
             if (!targetState.isAir() && !(targetState.getBlock() == Blocks.BEDROCK)){
-                level.setBlock(blockPos, Blocks.GOLD_BLOCK.defaultBlockState(), 3);
+                level.setBlock(blockPos, ModBlocks.CHOCOLATE_BLOCK.get().defaultBlockState(), 3);
             }
         }
     }

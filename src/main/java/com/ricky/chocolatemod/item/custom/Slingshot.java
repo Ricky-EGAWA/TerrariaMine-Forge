@@ -20,7 +20,6 @@ public class Slingshot extends BowItem {
     @Override
     public void releaseUsing(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pEntityLiving, int pTimeLeft) {
         if (pEntityLiving instanceof Player player) {
-            System.out.println("shoot");
 
             boolean flag = player.getAbilities().instabuild;
             ItemStack itemstack = ItemStack.EMPTY; // 矢を使わないため
@@ -31,7 +30,7 @@ public class Slingshot extends BowItem {
 
             // 発射力の計算
             float f = getPowerForTime(i);
-            if (!(f < 0.1D)) {
+            if (!(f < 0.5D)) {
                 if (!pLevel.isClientSide) {
                     // MyArrowEntityを作成して発射
                     MyArrowEntity arrowEntity = new MyArrowEntity(pLevel, player);
@@ -39,7 +38,6 @@ public class Slingshot extends BowItem {
                     arrowEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 3.0F, 1.0F);
 
                     pLevel.addFreshEntity(arrowEntity);  // 発射した弾をワールドに追加
-                    System.out.println("summon");
                 }
 
                 // 発射音を再生

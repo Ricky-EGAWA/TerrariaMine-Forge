@@ -5,6 +5,6 @@ import net.minecraft.world.item.Tiers;
 
 public class ChocolateSword extends SwordItem {
     public ChocolateSword() {
-        super(Tiers.DIAMOND, 5, -2.4f, new Properties().stacksTo(1));
+        super(Tiers.DIAMOND, 19, -2.4f, new Properties().stacksTo(1));
     }
 }

@@ -6,6 +6,7 @@ import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
 import com.ricky.chocolatemod.entity.ModEntities;
 import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
+import com.ricky.chocolatemod.event.ChocolateSwordEventHandler;
 import com.ricky.chocolatemod.event.SneakHandler;
 import com.ricky.chocolatemod.item.ModCreativeModTabs;
 import com.ricky.chocolatemod.item.ModItems;
@@ -46,6 +47,9 @@ public class ChocolateMod {
         new SneakHandler();
         // エンティティの登録
         ModEntities.register(modEventBus);
+
+        MinecraftForge.EVENT_BUS.register(ChocolateSwordEventHandler.class);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
