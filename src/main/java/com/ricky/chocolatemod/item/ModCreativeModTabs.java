@@ -23,6 +23,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.CHOCOLATE_SWORD.get());
                         pOutput.accept(ModItems.CHOCOLATE_SLINGSHOT.get());
                         pOutput.accept(ModBlocks.CHOCOLATE_BLOCK.get());
+                        pOutput.accept(ModItems.CHOCOLATE_BOMB.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

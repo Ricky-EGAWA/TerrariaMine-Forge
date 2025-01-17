@@ -1,6 +1,7 @@
 package com.ricky.chocolatemod.item;
 
 import com.ricky.chocolatemod.ChocolateMod;
+import com.ricky.chocolatemod.item.custom.ChocolateBomb;
 import com.ricky.chocolatemod.item.custom.ChocolateSword;
 import com.ricky.chocolatemod.item.custom.OrePickaxe;
 import com.ricky.chocolatemod.item.custom.Slingshot;
@@ -21,6 +22,8 @@ public class ModItems {
             ChocolateSword::new);
     public static final RegistryObject<Item> CHOCOLATE_SLINGSHOT = ITEMS.register("chocolate_slingshot",
             Slingshot::new);
+    public static final RegistryObject<Item> CHOCOLATE_BOMB = ITEMS.register("chocolate_bomb",
+            () -> new ChocolateBomb(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

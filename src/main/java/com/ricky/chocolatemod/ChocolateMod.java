@@ -13,6 +13,7 @@ import com.ricky.chocolatemod.item.ModItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -72,6 +73,7 @@ public class ChocolateMod {
 
             // クライアント側のセットアップでレンダラーを登録
             EntityRenderers.register(ModEntities.MY_ARROW.get(), MyArrowRenderer::new);
+            EntityRenderers.register(ModEntities.BOMB.get(), ThrownItemRenderer::new);
         }
     }
 }

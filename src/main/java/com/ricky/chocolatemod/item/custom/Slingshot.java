@@ -8,7 +8,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
-import org.jetbrains.annotations.NotNull;
 
 public class Slingshot extends BowItem {
     private static final Properties pProperties = new Properties();
@@ -18,7 +17,7 @@ public class Slingshot extends BowItem {
     }
 
     @Override
-    public void releaseUsing(@NotNull ItemStack pStack, @NotNull Level pLevel, @NotNull LivingEntity pEntityLiving, int pTimeLeft) {
+    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
         if (pEntityLiving instanceof Player player) {
 
             boolean flag = player.getAbilities().instabuild;
