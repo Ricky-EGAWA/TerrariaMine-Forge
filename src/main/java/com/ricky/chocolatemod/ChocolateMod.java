@@ -5,6 +5,7 @@ import com.ricky.chocolatemod.block.ModBlocks;
 import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
 import com.ricky.chocolatemod.entity.ModEntities;
+import com.ricky.chocolatemod.entity.monster.SugarSlimeRenderer;
 import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
 import com.ricky.chocolatemod.event.ChocolateSwordEventHandler;
 import com.ricky.chocolatemod.event.SneakHandler;
@@ -51,6 +52,7 @@ public class ChocolateMod {
 
         MinecraftForge.EVENT_BUS.register(ChocolateSwordEventHandler.class);
 
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -74,6 +76,7 @@ public class ChocolateMod {
             // クライアント側のセットアップでレンダラーを登録
             EntityRenderers.register(ModEntities.MY_ARROW.get(), MyArrowRenderer::new);
             EntityRenderers.register(ModEntities.BOMB.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.SUGAR_SLIME.get(), SugarSlimeRenderer::new);
         }
     }
 }
