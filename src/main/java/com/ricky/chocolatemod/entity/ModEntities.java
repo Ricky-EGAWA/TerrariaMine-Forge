@@ -2,6 +2,7 @@ package com.ricky.chocolatemod.entity;
 
 import com.ricky.chocolatemod.ChocolateMod;
 import com.ricky.chocolatemod.entity.monster.CrowedMonster;
+import com.ricky.chocolatemod.entity.monster.CrowedWither;
 import com.ricky.chocolatemod.entity.monster.SugarSlime;
 import com.ricky.chocolatemod.entity.projectile.BombEntity;
 import com.ricky.chocolatemod.entity.projectile.MyArrowEntity;
@@ -31,6 +32,10 @@ public class ModEntities {
     public static final RegistryObject<EntityType<CrowedMonster>> CROWED_MONSTER =
             ENTITY_TYPES.register("crowed_monster", () -> EntityType.Builder.of(CrowedMonster::new, MobCategory.MONSTER)
                     .sized(0.6f, 1.95f).build("crowed_monster"));
+
+    public static final RegistryObject<EntityType<CrowedWither>> CROWED_WITHER =
+            ENTITY_TYPES.register("crowed_wither", () -> EntityType.Builder.of(CrowedWither::new, MobCategory.MONSTER)
+                    .sized(0.9f, 3.5f).build("crowed_wither"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

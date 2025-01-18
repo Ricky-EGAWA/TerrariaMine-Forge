@@ -4,8 +4,10 @@ import com.mojang.logging.LogUtils;
 import com.ricky.chocolatemod.block.ModBlocks;
 import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
+import com.ricky.chocolatemod.effect.ModEffects;
 import com.ricky.chocolatemod.entity.ModEntities;
 import com.ricky.chocolatemod.entity.monster.CrowedMonsterRenderer;
+import com.ricky.chocolatemod.entity.monster.CrowedWitherRenderer;
 import com.ricky.chocolatemod.entity.monster.SugarSlimeRenderer;
 import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
 import com.ricky.chocolatemod.event.ChocolateSwordEventHandler;
@@ -39,7 +41,7 @@ public class ChocolateMod {
         ModCreativeModTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
+        ModEffects.register(modEventBus);
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
 
@@ -52,8 +54,6 @@ public class ChocolateMod {
         ModEntities.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(ChocolateSwordEventHandler.class);
-
-
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -79,6 +79,7 @@ public class ChocolateMod {
             EntityRenderers.register(ModEntities.BOMB.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.SUGAR_SLIME.get(), SugarSlimeRenderer::new);
             EntityRenderers.register(ModEntities.CROWED_MONSTER.get(), CrowedMonsterRenderer::new);
+            EntityRenderers.register(ModEntities.CROWED_WITHER.get(), CrowedWitherRenderer::new);
         }
     }
 }
