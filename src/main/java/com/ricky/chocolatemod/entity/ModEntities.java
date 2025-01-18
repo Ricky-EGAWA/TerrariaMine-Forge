@@ -5,6 +5,7 @@ import com.ricky.chocolatemod.entity.monster.CrowedMonster;
 import com.ricky.chocolatemod.entity.monster.CrowedWither;
 import com.ricky.chocolatemod.entity.monster.SugarSlime;
 import com.ricky.chocolatemod.entity.projectile.BombEntity;
+import com.ricky.chocolatemod.entity.projectile.HurricaneEntity;
 import com.ricky.chocolatemod.entity.projectile.MyArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -36,6 +37,10 @@ public class ModEntities {
     public static final RegistryObject<EntityType<CrowedWither>> CROWED_WITHER =
             ENTITY_TYPES.register("crowed_wither", () -> EntityType.Builder.of(CrowedWither::new, MobCategory.MONSTER)
                     .sized(0.9f, 3.5f).build("crowed_wither"));
+
+    public static final RegistryObject<EntityType<HurricaneEntity>> HURRICANE =
+            ENTITY_TYPES.register("hurricane", () -> EntityType.Builder.of(HurricaneEntity::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("hurricane"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

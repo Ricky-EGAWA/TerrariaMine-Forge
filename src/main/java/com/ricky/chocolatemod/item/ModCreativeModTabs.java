@@ -25,6 +25,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.CHOCOLATE_BLOCK.get());
                         pOutput.accept(ModItems.CHOCOLATE_BOMB.get());
                         pOutput.accept(ModItems.HEALER.get());
+                        pOutput.accept(ModItems.HURRICANE.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

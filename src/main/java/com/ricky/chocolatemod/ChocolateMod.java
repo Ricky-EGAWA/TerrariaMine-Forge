@@ -9,6 +9,7 @@ import com.ricky.chocolatemod.entity.ModEntities;
 import com.ricky.chocolatemod.entity.monster.CrowedMonsterRenderer;
 import com.ricky.chocolatemod.entity.monster.CrowedWitherRenderer;
 import com.ricky.chocolatemod.entity.monster.SugarSlimeRenderer;
+import com.ricky.chocolatemod.entity.projectile.HurricaneRenderer;
 import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
 import com.ricky.chocolatemod.event.ChocolateSwordEventHandler;
 import com.ricky.chocolatemod.event.SneakHandler;
@@ -80,6 +81,7 @@ public class ChocolateMod {
             EntityRenderers.register(ModEntities.SUGAR_SLIME.get(), SugarSlimeRenderer::new);
             EntityRenderers.register(ModEntities.CROWED_MONSTER.get(), CrowedMonsterRenderer::new);
             EntityRenderers.register(ModEntities.CROWED_WITHER.get(), CrowedWitherRenderer::new);
+            EntityRenderers.register(ModEntities.HURRICANE.get(), HurricaneRenderer::new);
         }
     }
 }
