@@ -12,6 +12,6 @@ public class CrowedWither extends WitherBoss {
     }
     @Override
     public boolean canBeAffected(MobEffectInstance pPotionEffect) {
-        return pPotionEffect.getEffect() != ModEffects.SUGAR_RUSH.get() && super.canBeAffected(pPotionEffect);
+        return pPotionEffect.getEffect() != ModEffects.ALONG.get() && super.canBeAffected(pPotionEffect);
     }
 }

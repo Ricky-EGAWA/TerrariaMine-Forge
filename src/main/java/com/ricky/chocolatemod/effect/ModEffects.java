@@ -11,8 +11,8 @@ public class ModEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS =
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, ChocolateMod.MOD_ID);
 
-    public static final RegistryObject<MobEffect> SUGAR_RUSH =
-            MOB_EFFECTS.register("along", SugarRushEffect::new);
+    public static final RegistryObject<MobEffect> ALONG =
+            MOB_EFFECTS.register("along", AlongEffect::new);
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

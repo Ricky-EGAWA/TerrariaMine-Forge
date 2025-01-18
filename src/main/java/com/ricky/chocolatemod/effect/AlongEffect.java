@@ -3,8 +3,8 @@ package com.ricky.chocolatemod.effect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 
-public class SugarRushEffect extends MobEffect {
-    public SugarRushEffect() {
+public class AlongEffect extends MobEffect {
+    public AlongEffect() {
         // MobEffectCategory.BENEFICIAL: プレイヤーにとって有益な効果
         // 0xFFFFFF: 効果の表示色
         super(MobEffectCategory.BENEFICIAL, 0xFFFFFF);

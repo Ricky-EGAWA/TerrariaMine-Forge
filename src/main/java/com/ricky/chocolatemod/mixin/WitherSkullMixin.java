@@ -28,7 +28,7 @@ public abstract class WitherSkullMixin {
                     damageApplied = target.hurt(damageSources.witherSkull((WitherSkull) (Object) this, livingOwner), 3);
                     if (damageApplied) {
                         // カスタムエフェクトを付与
-                        livingTarget.addEffect(new MobEffectInstance(ModEffects.SUGAR_RUSH.get(), 200, 1), livingOwner);
+                        livingTarget.addEffect(new MobEffectInstance(ModEffects.ALONG.get(), 200, 1), livingOwner);
                     }
                 } else {
                     target.hurt(damageSources.magic(), 1.5f);
