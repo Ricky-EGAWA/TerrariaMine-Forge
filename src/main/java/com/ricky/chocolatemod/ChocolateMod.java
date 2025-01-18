@@ -5,6 +5,7 @@ import com.ricky.chocolatemod.block.ModBlocks;
 import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
 import com.ricky.chocolatemod.entity.ModEntities;
+import com.ricky.chocolatemod.entity.monster.CrowedMonsterRenderer;
 import com.ricky.chocolatemod.entity.monster.SugarSlimeRenderer;
 import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
 import com.ricky.chocolatemod.event.ChocolateSwordEventHandler;
@@ -77,6 +78,7 @@ public class ChocolateMod {
             EntityRenderers.register(ModEntities.MY_ARROW.get(), MyArrowRenderer::new);
             EntityRenderers.register(ModEntities.BOMB.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.SUGAR_SLIME.get(), SugarSlimeRenderer::new);
+            EntityRenderers.register(ModEntities.CROWED_MONSTER.get(), CrowedMonsterRenderer::new);
         }
     }
 }
