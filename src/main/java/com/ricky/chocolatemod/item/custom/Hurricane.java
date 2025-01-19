@@ -32,10 +32,10 @@ public class Hurricane extends Item {
 
             // プレイヤーの位置にエンティティを配置
             Vec3 lookVector = pPlayer.getLookAngle(); // プレイヤーの視線方向
-            hurricane.setPos(pPlayer.getX() + lookVector.x, pPlayer.getEyeY() - 0.1, pPlayer.getZ() + lookVector.z);
+            hurricane.setPos(pPlayer.getX() + lookVector.x, pPlayer.getEyeY() - 1, pPlayer.getZ() + lookVector.z);
 
             // 発射方向を設定してエンティティを発射
-            hurricane.shootInDirection(lookVector, 1F); // 向きと速度を設定
+            hurricane.shootInDirection(lookVector, 0.1F); // 向きと速度を設定
 
             // エンティティをワールドに追加
             pLevel.addFreshEntity(hurricane);
