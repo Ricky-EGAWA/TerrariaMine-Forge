@@ -1,3 +1,8 @@
 {
-  "item.terrariamod.cobalt_ingot": "コバルトインゴット"
+  "item.terrariamod.cobalt_ingot": "コバルトインゴット",
+  "item.terrariamod.cobalt_raw": "コバルトの原石",
+  "creativetab.mod_item_tab": "モッドアイテム",
+
+  "block.terrariamod.cobalt_ore": "コバルト鉱石",
+  "block.terrariamod.cobalt_block": "コバルトブロック"
 }
