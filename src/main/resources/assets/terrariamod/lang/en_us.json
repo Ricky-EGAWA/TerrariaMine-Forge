@@ -1,8 +1,5 @@
 {
   "item.terrariamod.cobalt_ingot": "Cobalt Ingot",
   "item.terrariamod.cobalt_raw": "Cobalt Raw",
-  "creativetab.mod_item_tab": "Mod Items",
-
-  "block.terrariamod.cobalt_ore": "Cobalt Ore",
-  "block.terrariamod.cobalt_block": "Cobalt Block"
+  "creativetab.mod_item_tab": "Mod Items"
 }

@@ -1,7 +1,6 @@
 package com.ricky.terrariamod;
 
 import com.mojang.logging.LogUtils;
-import com.ricky.terrariamod.block.ModBlocks;
 import com.ricky.terrariamod.item.ModCreativeModTabs;
 import com.ricky.terrariamod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -27,7 +26,6 @@ public class TerrariaMod{
 
         ModCreativeModTabs.register(modEventBus);
         ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
