@@ -47,11 +47,13 @@ public class BombEntity extends ThrowableItemProjectile {
             // 半径5マス内のエンティティにダメージを与える
             level.getEntities(this, this.getBoundingBox().inflate(explosionRadius), entity -> !(entity instanceof Player))
                     .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 24.0F)); // ハート12個分のダメージ
-        }else{
-            // ハートのパーティクルを爆発地点に表示
-            int particleCount = explosionRadius * 20; // パーティクルの量を調整
+        }
 
-            for (int i = 0; i < particleCount; i++) {//TODO エフェクトがたまに発生しない　爆発サウンドを追加
+        if (this.level().isClientSide()) {
+            System.out.println("bomb explode");
+            // パーティクルの表示処理
+            int particleCount = Math.min(explosionRadius * 20, 200); // パーティクルの量を調整
+            for (int i = 0; i < particleCount; i++) {
                 double offsetX = (Math.random() - 0.5) * explosionRadius * 2;
                 double offsetY = (Math.random() - 0.5) * explosionRadius * 2;
                 double offsetZ = (Math.random() - 0.5) * explosionRadius * 2;
@@ -62,6 +64,18 @@ public class BombEntity extends ThrowableItemProjectile {
                         0, 0, 0);
             }
         }
+
+        // **爆発音を再生**
+        level.playLocalSound(
+                impactPos.getX() + 0.5, // サウンドのX座標
+                impactPos.getY() + 0.5, // サウンドのY座標
+                impactPos.getZ() + 0.5, // サウンドのZ座標
+                net.minecraft.sounds.SoundEvents.GENERIC_EXPLODE, // 爆発音
+                net.minecraft.sounds.SoundSource.BLOCKS, // サウンドソース
+                2.0F, // 音量
+                1.0F, // ピッチ
+                false // 距離減衰の適用
+        );
         this.discard();
     }
 }

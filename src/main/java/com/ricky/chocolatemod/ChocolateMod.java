@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.ricky.chocolatemod.block.ModBlocks;
 import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
+import com.ricky.chocolatemod.client.ChocolateHudOverlay;
 import com.ricky.chocolatemod.effect.ModEffects;
 import com.ricky.chocolatemod.entity.ModEntities;
 import com.ricky.chocolatemod.entity.monster.CrowedMonsterRenderer;
@@ -82,6 +83,8 @@ public class ChocolateMod {
             EntityRenderers.register(ModEntities.CROWED_MONSTER.get(), CrowedMonsterRenderer::new);
             EntityRenderers.register(ModEntities.CROWED_WITHER.get(), CrowedWitherRenderer::new);
             EntityRenderers.register(ModEntities.HURRICANE.get(), HurricaneRenderer::new);
+
+            new ChocolateHudOverlay(); // HUD オーバーレイの初期化
         }
     }
 }

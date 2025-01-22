@@ -41,7 +41,7 @@ public class HurricaneEntity extends Entity {
     }
 
     @Override
-    public void tick() {//TODO パーティクルの変更
+    public void tick() {
         super.tick();
         BlockPos blockPos = this.getOnPos();
         Level level = this.level();
@@ -112,7 +112,6 @@ public class HurricaneEntity extends Entity {
                 double particleX = centerX + Math.cos(angle) * radius;
                 double particleZ = centerZ + Math.sin(angle) * radius;
                 double particleY = centerY + height * 0.5; // 高さに応じてY座標を変更
-                System.out.println("pos: "+particleX+" "+particleY+" "+particleZ);
 
                 // パーティクルを生成
                 this.level().addParticle(
