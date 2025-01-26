@@ -62,7 +62,7 @@ public class ModBlocks {
             BLOCK_ENTITY_TYPES.register("exchange_slingshot",
                     () -> BlockEntityType.Builder.of(ExchangeSlingshotBlockEntity::new, ModBlocks.EXCHANGE_SLINGSHOT.get()).build(null));
     public static final RegistryObject<Block> EXCHANGE_MAGIC = registerBlock("exchange_magic",
-            () -> new ExchangeSlingshot(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+            () -> new ExchangeMagic(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
     public static final RegistryObject<BlockEntityType<ExchangeMagicBlockEntity>> EXCHANGE_MAGIC_BLOCK_ENTITY =
             BLOCK_ENTITY_TYPES.register("exchange_magic",
                     () -> BlockEntityType.Builder.of(ExchangeMagicBlockEntity::new, ModBlocks.EXCHANGE_MAGIC.get()).build(null));
