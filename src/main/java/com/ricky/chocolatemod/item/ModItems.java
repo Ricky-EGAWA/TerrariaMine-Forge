@@ -25,6 +25,8 @@ public class ModItems {
             () -> new Healer(new Item.Properties()));
     public static final RegistryObject<Item> HURRICANE = ITEMS.register("hurricane",
             () -> new Hurricane(new Item.Properties()));
+    public static final RegistryObject<Item> MAGIC = ITEMS.register("magic",
+            () -> new Magic(new Item.Properties()));
 
     public static final RegistryObject<Item> TELEPORT_ITEM = ITEMS.register("teleport",
             () -> new TeleportItem(new Item.Properties().stacksTo(1)));

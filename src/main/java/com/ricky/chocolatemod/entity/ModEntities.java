@@ -6,6 +6,7 @@ import com.ricky.chocolatemod.entity.monster.CrowedWither;
 import com.ricky.chocolatemod.entity.monster.SugarSlime;
 import com.ricky.chocolatemod.entity.projectile.BombEntity;
 import com.ricky.chocolatemod.entity.projectile.HurricaneEntity;
+import com.ricky.chocolatemod.entity.projectile.MagicEntity;
 import com.ricky.chocolatemod.entity.projectile.MyArrowEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -25,6 +26,9 @@ public class ModEntities {
     public static final RegistryObject<EntityType<BombEntity>> BOMB =
             ENTITY_TYPES.register("bomb", () -> EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("bomb"));
+    public static final RegistryObject<EntityType<MagicEntity>> MAGIC =
+            ENTITY_TYPES.register("magic", () -> EntityType.Builder.<MagicEntity>of(MagicEntity::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("magic"));
 
     public static final RegistryObject<EntityType<SugarSlime>> SUGAR_SLIME =
             ENTITY_TYPES.register("sugar_slime", () -> EntityType.Builder.of(SugarSlime::new, MobCategory.MONSTER)

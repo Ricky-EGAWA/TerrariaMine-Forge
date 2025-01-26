@@ -57,8 +57,8 @@ public class ExchangeSlingshotRenderer implements BlockEntityRenderer<ExchangeSl
         poseStack.pushPose();
 
         // テキストを描画する文字列
-        String text = "チョコボム";
-        String cost = "5000";
+        String text = "チョコスリングショット";
+        String cost = "300";
 
         // 各方向に合わせた回転角度
         int[] rotations = {0, 90, 180, 270}; // 北 (0度), 東 (90度), 南 (180度), 西 (270度)

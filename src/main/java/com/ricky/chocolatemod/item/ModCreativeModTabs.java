@@ -26,6 +26,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.CHOCOLATE_BOMB.get());
                         pOutput.accept(ModItems.HEALER.get());
                         pOutput.accept(ModItems.HURRICANE.get());
+                        pOutput.accept(ModItems.MAGIC.get());
                         pOutput.accept(ModItems.TELEPORT_ITEM.get());
                         pOutput.accept(ModBlocks.EXCHANGE_ORE_PICKAXE.get());
                         pOutput.accept(ModBlocks.EXCHANGE_HEALER.get());
@@ -33,6 +34,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.EXCHANGE_BOMB.get());
                         pOutput.accept(ModBlocks.EXCHANGE_SWORD.get());
                         pOutput.accept(ModBlocks.EXCHANGE_SLINGSHOT.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_MAGIC.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {
