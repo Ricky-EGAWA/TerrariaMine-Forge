@@ -27,6 +27,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.HEALER.get());
                         pOutput.accept(ModItems.HURRICANE.get());
                         pOutput.accept(ModItems.TELEPORT_ITEM.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_ORE_PICKAXE.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.ricky.chocolatemod.block.ModBlocks;
 import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
+import com.ricky.chocolatemod.block.renderer.ExchangeOrePickaxeRenderer;
 import com.ricky.chocolatemod.client.ChocolateHudOverlay;
 import com.ricky.chocolatemod.effect.ModEffects;
 import com.ricky.chocolatemod.entity.ModEntities;
@@ -18,6 +19,7 @@ import com.ricky.chocolatemod.item.ModCreativeModTabs;
 import com.ricky.chocolatemod.item.ModItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -83,6 +85,9 @@ public class ChocolateMod {
             EntityRenderers.register(ModEntities.CROWED_MONSTER.get(), CrowedMonsterRenderer::new);
             EntityRenderers.register(ModEntities.CROWED_WITHER.get(), CrowedWitherRenderer::new);
             EntityRenderers.register(ModEntities.HURRICANE.get(), HurricaneRenderer::new);
+
+
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_ORE_PICKAXE_BLOCK_ENTITY.get(), ExchangeOrePickaxeRenderer::new);
 
             new ChocolateHudOverlay(); // HUD オーバーレイの初期化
         }

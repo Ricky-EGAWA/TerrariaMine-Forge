@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "chocolatemod:block/exchange_ore_pickaxe"
+    }
+  }
+}

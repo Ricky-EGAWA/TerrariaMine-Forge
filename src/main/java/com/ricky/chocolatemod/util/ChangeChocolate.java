@@ -8,6 +8,9 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class ChangeChocolate {
     public static void change(Level level, BlockPos blockPos, boolean h){
+        if (level.dimension().location().toString().equals("chocolatemod:chocolate_dimension")){
+            return;
+        }
         BlockState targetState = level.getBlockState(blockPos);
         if(h){ //腐敗したブロックを置き換え可能
             if (!targetState.isAir() && targetState.getBlock() != Blocks.BEDROCK && targetState.getBlock() != ModBlocks.CHOCOLATE_BLOCK.get()){
