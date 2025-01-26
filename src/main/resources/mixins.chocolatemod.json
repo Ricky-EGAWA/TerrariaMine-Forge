@@ -5,6 +5,7 @@
   "refmap": "mixins.chocolatemod.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "FoodDataMixin",
     "WitherSkullMixin"
   ],
   "injectors": {
