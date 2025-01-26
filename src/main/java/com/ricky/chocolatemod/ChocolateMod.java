@@ -4,7 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.ricky.chocolatemod.block.ModBlocks;
 import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
-import com.ricky.chocolatemod.block.renderer.ExchangeOrePickaxeRenderer;
+import com.ricky.chocolatemod.block.renderer.*;
 import com.ricky.chocolatemod.client.ChocolateHudOverlay;
 import com.ricky.chocolatemod.effect.ModEffects;
 import com.ricky.chocolatemod.entity.ModEntities;
@@ -88,6 +88,11 @@ public class ChocolateMod {
 
 
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_ORE_PICKAXE_BLOCK_ENTITY.get(), ExchangeOrePickaxeRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_HEALER_BLOCK_ENTITY.get(), ExchangeHealerRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_HURRICANE_BLOCK_ENTITY.get(), ExchangeHurricaneRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_BOMB_BLOCK_ENTITY.get(), ExchangeBombRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_SWORD_BLOCK_ENTITY.get(), ExchangeSwordRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_SLINGSHOT_BLOCK_ENTITY.get(), ExchangeSlingshotRenderer::new);
 
             new ChocolateHudOverlay(); // HUD オーバーレイの初期化
         }

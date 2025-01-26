@@ -1,6 +1,7 @@
 package com.ricky.chocolatemod.block.exchange;
 
-import com.ricky.chocolatemod.block.entity.ExchangeOrePickaxeBlockEntity;
+import com.ricky.chocolatemod.block.entity.ExchangeBombBlockEntity;
+import com.ricky.chocolatemod.block.entity.ExchangeSwordBlockEntity;
 import com.ricky.chocolatemod.item.ModItems;
 import com.ricky.chocolatemod.util.ChocolateCounter;
 import net.minecraft.core.BlockPos;
@@ -16,18 +17,18 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class ExchangeOrePickaxe extends Block implements EntityBlock {
-    public ExchangeOrePickaxe(Properties properties) {
+public class ExchangeSword extends Block implements EntityBlock {
+    public ExchangeSword(Properties properties) {
         super(properties);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!level.isClientSide && ChocolateCounter.getInstance().useChocolate(200000)) {
+        if (!level.isClientSide && ChocolateCounter.getInstance().useChocolate(1000)) {
             // プレイヤーにアイテムを渡す
-            ItemStack orePickaxe = new ItemStack(ModItems.ORE_PICKAXE.get());
-            if (!player.getInventory().add(orePickaxe)) {
-                player.drop(orePickaxe, false); // インベントリがいっぱいならドロップ
+            ItemStack sword = new ItemStack(ModItems.CHOCOLATE_SWORD.get());
+            if (!player.getInventory().add(sword)) {
+                player.drop(sword, false); // インベントリがいっぱいならドロップ
             }
             return InteractionResult.SUCCESS;
         }
@@ -36,6 +37,6 @@ public class ExchangeOrePickaxe extends Block implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState state) {
-        return new ExchangeOrePickaxeBlockEntity(blockPos, state);
+        return new ExchangeSwordBlockEntity(blockPos, state);
     }
 }

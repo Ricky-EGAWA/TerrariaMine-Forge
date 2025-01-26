@@ -28,6 +28,11 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.HURRICANE.get());
                         pOutput.accept(ModItems.TELEPORT_ITEM.get());
                         pOutput.accept(ModBlocks.EXCHANGE_ORE_PICKAXE.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_HEALER.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_HURRICANE.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_BOMB.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_SWORD.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_SLINGSHOT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

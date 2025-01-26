@@ -2,7 +2,7 @@ package com.ricky.chocolatemod.block.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.ricky.chocolatemod.block.entity.ExchangeOrePickaxeBlockEntity;
+import com.ricky.chocolatemod.block.entity.ExchangeSwordBlockEntity;
 import com.ricky.chocolatemod.item.ModItems;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -13,18 +13,18 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-public class ExchangeOrePickaxeRenderer implements BlockEntityRenderer<ExchangeOrePickaxeBlockEntity> {
+public class ExchangeSwordRenderer implements BlockEntityRenderer<ExchangeSwordBlockEntity> {
     private final ItemRenderer itemRenderer;
     private final Font font;
     private int lightAtPos = 0xF000F0; // 最大限に明るい光源値
 
-    public ExchangeOrePickaxeRenderer(BlockEntityRendererProvider.Context context) {
+    public ExchangeSwordRenderer(BlockEntityRendererProvider.Context context) {
         this.itemRenderer = context.getItemRenderer();
         this.font = context.getFont();
     }
 
     @Override
-    public void render(ExchangeOrePickaxeBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(ExchangeSwordBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         // アイテムを描画
         renderItem(blockEntity, partialTicks, poseStack, bufferSource, packedOverlay);
 
@@ -32,7 +32,7 @@ public class ExchangeOrePickaxeRenderer implements BlockEntityRenderer<ExchangeO
         renderText(poseStack, bufferSource);
     }
 
-    private void renderItem(ExchangeOrePickaxeBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedOverlay) {
+    private void renderItem(ExchangeSwordBlockEntity blockEntity, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int packedOverlay) {
         poseStack.pushPose();
 
         // ブロックの中心に移動
@@ -44,7 +44,7 @@ public class ExchangeOrePickaxeRenderer implements BlockEntityRenderer<ExchangeO
         poseStack.mulPose(Axis.YP.rotationDegrees(angle * 3)); // Y軸回転
 
         // アイテムを描画
-        ItemStack itemStack = new ItemStack(ModItems.ORE_PICKAXE.get());
+        ItemStack itemStack = new ItemStack(ModItems.CHOCOLATE_SWORD.get());
         BakedModel model = itemRenderer.getModel(itemStack, null, null, 0);
 
         // 最大ライティングを強制
@@ -57,8 +57,8 @@ public class ExchangeOrePickaxeRenderer implements BlockEntityRenderer<ExchangeO
         poseStack.pushPose();
 
         // テキストを描画する文字列
-        String text = "クリスタルチョコピッケル";
-        String cost = "200000";
+        String text = "チョコボム";
+        String cost = "5000";
 
         // 各方向に合わせた回転角度
         int[] rotations = {0, 90, 180, 270}; // 北 (0度), 東 (90度), 南 (180度), 西 (270度)

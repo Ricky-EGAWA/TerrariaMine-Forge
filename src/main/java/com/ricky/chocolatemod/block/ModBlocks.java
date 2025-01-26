@@ -1,8 +1,8 @@
 package com.ricky.chocolatemod.block;
 
 import com.ricky.chocolatemod.ChocolateMod;
-import com.ricky.chocolatemod.block.entity.ExchangeOrePickaxeBlockEntity;
-import com.ricky.chocolatemod.block.exchange.ExchangeOrePickaxe;
+import com.ricky.chocolatemod.block.entity.*;
+import com.ricky.chocolatemod.block.exchange.*;
 import com.ricky.chocolatemod.block.milk.ModFluids;
 import com.ricky.chocolatemod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -29,13 +29,38 @@ public class ModBlocks {
     public static final RegistryObject<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
 
+    //Exchange block
     public static final RegistryObject<Block> EXCHANGE_ORE_PICKAXE = registerBlock("exchange_ore_pickaxe",
             () -> new ExchangeOrePickaxe(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
-
-    // ブロックエンティティの登録
     public static final RegistryObject<BlockEntityType<ExchangeOrePickaxeBlockEntity>> EXCHANGE_ORE_PICKAXE_BLOCK_ENTITY =
             BLOCK_ENTITY_TYPES.register("exchange_ore_pickaxe",
                     () -> BlockEntityType.Builder.of(ExchangeOrePickaxeBlockEntity::new, ModBlocks.EXCHANGE_ORE_PICKAXE.get()).build(null));
+
+    public static final RegistryObject<Block> EXCHANGE_HEALER = registerBlock("exchange_healer",
+            () -> new ExchangeHealer(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final RegistryObject<BlockEntityType<ExchangeHealerBlockEntity>> EXCHANGE_HEALER_BLOCK_ENTITY =
+            BLOCK_ENTITY_TYPES.register("exchange_healer",
+                    () -> BlockEntityType.Builder.of(ExchangeHealerBlockEntity::new, ModBlocks.EXCHANGE_HEALER.get()).build(null));
+    public static final RegistryObject<Block> EXCHANGE_HURRICANE = registerBlock("exchange_hurricane",
+            () -> new ExchangeHurricane(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final RegistryObject<BlockEntityType<ExchangeHurricaneBlockEntity>> EXCHANGE_HURRICANE_BLOCK_ENTITY =
+            BLOCK_ENTITY_TYPES.register("exchange_hurricane",
+                    () -> BlockEntityType.Builder.of(ExchangeHurricaneBlockEntity::new, ModBlocks.EXCHANGE_HURRICANE.get()).build(null));
+    public static final RegistryObject<Block> EXCHANGE_BOMB = registerBlock("exchange_bomb",
+            () -> new ExchangeBomb(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final RegistryObject<BlockEntityType<ExchangeBombBlockEntity>> EXCHANGE_BOMB_BLOCK_ENTITY =
+            BLOCK_ENTITY_TYPES.register("exchange_bomb",
+                    () -> BlockEntityType.Builder.of(ExchangeBombBlockEntity::new, ModBlocks.EXCHANGE_BOMB.get()).build(null));
+    public static final RegistryObject<Block> EXCHANGE_SWORD = registerBlock("exchange_sword",
+            () -> new ExchangeSword(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final RegistryObject<BlockEntityType<ExchangeSwordBlockEntity>> EXCHANGE_SWORD_BLOCK_ENTITY =
+            BLOCK_ENTITY_TYPES.register("exchange_sword",
+                    () -> BlockEntityType.Builder.of(ExchangeSwordBlockEntity::new, ModBlocks.EXCHANGE_SWORD.get()).build(null));
+    public static final RegistryObject<Block> EXCHANGE_SLINGSHOT = registerBlock("exchange_slingshot",
+            () -> new ExchangeSlingshot(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final RegistryObject<BlockEntityType<ExchangeSlingshotBlockEntity>> EXCHANGE_SLINGSHOT_BLOCK_ENTITY =
+            BLOCK_ENTITY_TYPES.register("exchange_slingshot",
+                    () -> BlockEntityType.Builder.of(ExchangeSlingshotBlockEntity::new, ModBlocks.EXCHANGE_SWORD.get()).build(null));
 
 
     public static final RegistryObject<LiquidBlock> MILK_FLUID_BLOCK = BLOCKS.register("milk_fluid_block",
