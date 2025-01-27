@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "minecraft:iron_block"
+    },
+    "C": {
+      "item": "chocolatemod:chocolate_block"
+    }
+  },
+  "pattern": [
+    "OC ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "chocolatemod:iron_chocolate_block"
+  },
+  "show_notification": true
+}

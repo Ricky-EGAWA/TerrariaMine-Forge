@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "minecraft:emerald_block"
+    },
+    "C": {
+      "item": "chocolatemod:chocolate_block"
+    }
+  },
+  "pattern": [
+    "OC ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "chocolatemod:emerald_chocolate_block"
+  },
+  "show_notification": true
+}

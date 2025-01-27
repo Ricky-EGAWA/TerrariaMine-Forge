@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "chocolatemod:block/lapis_chocolate_block"
+  }
+}

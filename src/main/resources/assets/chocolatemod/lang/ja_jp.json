@@ -12,6 +12,11 @@
   "creativetab.mod_item_tab": "モッドアイテム",
 
   "block.chocolatemod.chocolate_block": "チョコブロック",
+  "block.chocolatemod.diamond_chocolate_block": "ダイヤチョコブロック",
+  "block.chocolatemod.iron_chocolate_block": "鉄チョコブロック",
+  "block.chocolatemod.gold_chocolate_block": "ゴールドチョコブロック",
+  "block.chocolatemod.emerald_chocolate_block": "エメラルドチョコブロック",
+  "block.chocolatemod.lapis_chocolate_block": "ラピスラズリチョコブロック",
   "block.chocolatemod.exchange_bomb": "チョコボム交換",
   "block.chocolatemod.exchange_magic": "マジカルチョコステッキ交換",
   "block.chocolatemod.exchange_hurricane": "チョコストーム交換",

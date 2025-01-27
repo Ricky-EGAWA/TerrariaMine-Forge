@@ -12,6 +12,11 @@
   "creativetab.mod_item_tab": "Mod Items",
 
   "block.chocolatemod.chocolate_block": "Chocolate Block",
+  "block.chocolatemod.diamond_chocolate_block": "Diamond Chocolate Block",
+  "block.chocolatemod.iron_chocolate_block": "Iron Chocolate Block",
+  "block.chocolatemod.gold_chocolate_block": "Gold Chocolate Block",
+  "block.chocolatemod.emerald_chocolate_block": "Emerald Chocolate Block",
+  "block.chocolatemod.lapis_chocolate_block": "Lapis Chocolate Block",
   "block.chocolatemod.exchange_bomb": "Bomb Exchange Block",
   "block.chocolatemod.exchange_magic": "Magical Chocolate Wand Exchange Block",
   "block.chocolatemod.exchange_hurricane": "Chocolate Storm Exchange Block",

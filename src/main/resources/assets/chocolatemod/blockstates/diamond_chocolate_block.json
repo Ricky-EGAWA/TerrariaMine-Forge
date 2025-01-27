@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "chocolatemod:block/diamond_chocolate_block"
+    }
+  }
+}

@@ -28,6 +28,16 @@ public class ModBlocks {
     // ブロック登録
     public static final RegistryObject<Block> CHOCOLATE_BLOCK = registerBlock("chocolate_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> DIAMOND_CHOCOLATE_BLOCK = registerBlock("diamond_chocolate_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> LAPIS_CHOCOLATE_BLOCK = registerBlock("lapis_chocolate_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> EMERALD_CHOCOLATE_BLOCK = registerBlock("emerald_chocolate_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> IRON_CHOCOLATE_BLOCK = registerBlock("iron_chocolate_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+    public static final RegistryObject<Block> GOLD_CHOCOLATE_BLOCK = registerBlock("gold_chocolate_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
 
     //Exchange block
     public static final RegistryObject<Block> EXCHANGE_ORE_PICKAXE = registerBlock("exchange_ore_pickaxe",

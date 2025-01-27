@@ -24,6 +24,11 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.CHOCOLATE_SWORD.get());
                         pOutput.accept(ModItems.CHOCOLATE_SLINGSHOT.get());
                         pOutput.accept(ModBlocks.CHOCOLATE_BLOCK.get());
+                        pOutput.accept(ModBlocks.DIAMOND_CHOCOLATE_BLOCK.get());
+                        pOutput.accept(ModBlocks.EMERALD_CHOCOLATE_BLOCK.get());
+                        pOutput.accept(ModBlocks.GOLD_CHOCOLATE_BLOCK.get());
+                        pOutput.accept(ModBlocks.IRON_CHOCOLATE_BLOCK.get());
+                        pOutput.accept(ModBlocks.LAPIS_CHOCOLATE_BLOCK.get());
                         pOutput.accept(ModItems.CHOCOLATE_BOMB.get());
                         pOutput.accept(ModItems.HEALER.get());
                         pOutput.accept(ModItems.HURRICANE.get());

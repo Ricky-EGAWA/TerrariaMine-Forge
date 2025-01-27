@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "O": {
+      "item": "minecraft:lapis_block"
+    },
+    "C": {
+      "item": "chocolatemod:chocolate_block"
+    }
+  },
+  "pattern": [
+    "OC ",
+    "   ",
+    "   "
+  ],
+  "result": {
+    "item": "chocolatemod:lapis_chocolate_block"
+  },
+  "show_notification": true
+}
