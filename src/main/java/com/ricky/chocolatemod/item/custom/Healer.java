@@ -3,17 +3,22 @@ package com.ricky.chocolatemod.item.custom;
 import com.ricky.chocolatemod.util.ChangeChocolate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
+import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
+
+import java.util.List;
 
 public class Healer extends Item {
     private BlockPos lastTarget;
@@ -90,5 +95,10 @@ public class Healer extends Item {
                     0.0, 0.25, 0.0 // パーティクルの色（茶色っぽい色）
             );
         }
+    }
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+        // 翻訳可能なテキストをツールチップに追加
+        tooltip.add(Component.translatable("item.chocolatemod.healer.tooltip"));
     }
 }

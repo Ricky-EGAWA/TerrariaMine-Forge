@@ -1,5 +1,35 @@
 {
-  "item.terrariamod.cobalt_ingot": "Cobalt Ingot",
-  "item.terrariamod.cobalt_raw": "Cobalt Raw",
-  "creativetab.mod_item_tab": "Mod Items"
+  "item.chocolatemod.chocolate": "Chocolate",
+  "item.chocolatemod.valentine_chocolate": "Valentine Chocolate",
+  "item.chocolatemod.ore_pickaxe": "Cristal Chocolate Pickaxe",
+  "item.chocolatemod.chocolate_sword": "Chocolate Excalibur",
+  "item.chocolatemod.chocolate_slingshot": "Chocolate Slingshot",
+  "item.chocolatemod.chocolate_bomb": "Chocolate Bomb",
+  "item.chocolatemod.healer": "Crowed Healer",
+  "item.chocolatemod.hurricane": "Chocolate Storm",
+  "item.chocolatemod.magic": "Magical Chocolate Wand",
+  "item.chocolatemod.teleport": "Shop",
+  "creativetab.mod_item_tab": "Mod Items",
+
+  "block.chocolatemod.chocolate_block": "Chocolate Block",
+  "block.chocolatemod.exchange_bomb": "Bomb Exchange Block",
+  "block.chocolatemod.exchange_magic": "Magical Chocolate Wand Exchange Block",
+  "block.chocolatemod.exchange_hurricane": "Chocolate Storm Exchange Block",
+  "block.chocolatemod.exchange_healer": "Crowed Healer Exchange Block",
+  "block.chocolatemod.exchange_ore_pickaxe": "Cristal Chocolate Pickaxe Exchange Block",
+  "block.chocolatemod.exchange_slingshot": "Chocolate Slingshot Exchange Block",
+  "block.chocolatemod.exchange_sword": "Chocolate Excalibur Exchange Block",
+
+  "entity.chocolatemod.sugar_slime": "Sugar Slime",
+  "entity.chocolatemod.crowed_monster": "Crowed Monster",
+  "entity.chocolatemod.crowed_wither": "Crowed Wither",
+
+  "item.chocolatemod.teleport_item.tooltip": "Right-click to teleport to the shop!",
+  "item.chocolatemod.ore_pickaxe.tooltip": "Sneak to create Ore Blocks!",
+  "item.chocolatemod.hurricane.tooltip": "Right-click to summon chocolate storm!",
+  "item.chocolatemod.chocolate_bomb.tooltip": "Right-click to through chocolate bomb!",
+  "item.chocolatemod.slingshot.tooltip": "Right-click to shoot!",
+  "item.chocolatemod.chocolate_sword.tooltip": "Create chocolates if attack!",
+  "item.chocolatemod.magic.tooltip": "Right-click to shoot!",
+  "item.chocolatemod.healer.tooltip": "Right-click to shoot!"
 }

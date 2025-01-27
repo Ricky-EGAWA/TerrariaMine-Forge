@@ -3,6 +3,7 @@ package com.ricky.chocolatemod.item.custom;
 import com.ricky.chocolatemod.ChocolateMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -12,7 +13,11 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class TeleportItem extends Item {
     public TeleportItem(Properties properties) {
@@ -54,5 +59,10 @@ public class TeleportItem extends Item {
 
         // アイテムの使用結果を返す
         return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());
+    }
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+        // 翻訳可能なテキストをツールチップに追加
+        tooltip.add(Component.translatable("item.chocolatemod.teleport_item.tooltip"));
     }
 }

@@ -13,6 +13,8 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, ChocolateMod.MOD_ID);
     public static final RegistryObject<Item> CHOCOLATE = ITEMS.register("chocolate",
             () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE)));
+    public static final RegistryObject<Item> VALENTINE_CHOCOLATE = ITEMS.register("valentine_chocolate",
+            () -> new Item(new Item.Properties().food(ModFoods.CHOCOLATE)));
     public static final RegistryObject<Item> ORE_PICKAXE = ITEMS.register("ore_pickaxe",
             OrePickaxe::new);
     public static final RegistryObject<Item> CHOCOLATE_SWORD = ITEMS.register("chocolate_sword",

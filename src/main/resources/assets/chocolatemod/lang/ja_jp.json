@@ -1,3 +1,35 @@
 {
-  "item.terrariamod.cobalt_ingot": "コバルトインゴット"
+  "item.chocolatemod.chocolate": "チョコレート",
+  "item.chocolatemod.valentine_chocolate": "バレンタインチョコ",
+  "item.chocolatemod.ore_pickaxe": "クリスタルチョコピッケル",
+  "item.chocolatemod.chocolate_sword": "チョコレートキャリバー",
+  "item.chocolatemod.chocolate_slingshot": "チョコスリングショット",
+  "item.chocolatemod.chocolate_bomb": "チョコボム",
+  "item.chocolatemod.healer": "クロウドヒーラー",
+  "item.chocolatemod.hurricane": "チョコストーム",
+  "item.chocolatemod.magic": "マジカルチョコステッキ",
+  "item.chocolatemod.teleport": "商店",
+  "creativetab.mod_item_tab": "モッドアイテム",
+
+  "block.chocolatemod.chocolate_block": "チョコブロック",
+  "block.chocolatemod.exchange_bomb": "チョコボム交換",
+  "block.chocolatemod.exchange_magic": "マジカルチョコステッキ交換",
+  "block.chocolatemod.exchange_hurricane": "チョコストーム交換",
+  "block.chocolatemod.exchange_healer": "クロウドヒーラー交換",
+  "block.chocolatemod.exchange_ore_pickaxe": "クリスタルチョコピッケル交換",
+  "block.chocolatemod.exchange_slingshot": "チョコスリングショット交換",
+  "block.chocolatemod.exchange_sword": "チョコレートキャリバー交換",
+
+  "entity.chocolatemod.sugar_slime": "シュガースライム",
+  "entity.chocolatemod.crowed_monster": "クロウドモンスター",
+  "entity.chocolatemod.crowed_wither": "クロウドウィザー",
+
+  "item.chocolatemod.teleport_item.tooltip": "右クリックでショップへ移動/帰還",
+  "item.chocolatemod.ore_pickaxe.tooltip": "しゃがむと鉱石ブロックを生成",
+  "item.chocolatemod.hurricane.tooltip": "右クリックでチョコストームを召喚",
+  "item.chocolatemod.chocolate_bomb.tooltip": "右クリックでチョコボムを投げる",
+  "item.chocolatemod.slingshot.tooltip": "右クリックで発射",
+  "item.chocolatemod.chocolate_sword.tooltip": "攻撃時にチョコブロックを生成",
+  "item.chocolatemod.magic.tooltip": "右クリックで発射",
+  "item.chocolatemod.healer.tooltip": "右クリックで発射"
 }
