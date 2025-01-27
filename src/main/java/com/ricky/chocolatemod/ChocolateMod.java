@@ -14,6 +14,7 @@ import com.ricky.chocolatemod.entity.monster.SugarSlimeRenderer;
 import com.ricky.chocolatemod.entity.projectile.HurricaneRenderer;
 import com.ricky.chocolatemod.entity.projectile.MagicEntityRenderer;
 import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
+import com.ricky.chocolatemod.entity.spawn.SpawnModifier;
 import com.ricky.chocolatemod.event.ChocolateSwordEventHandler;
 import com.ricky.chocolatemod.event.SneakHandler;
 import com.ricky.chocolatemod.item.ModCreativeModTabs;
@@ -49,6 +50,9 @@ public class ChocolateMod {
         ModEffects.register(modEventBus);
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
+
+        // BiomeModifierの登録
+        SpawnModifier.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
