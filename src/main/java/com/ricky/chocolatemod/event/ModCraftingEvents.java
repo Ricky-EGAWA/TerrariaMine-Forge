@@ -23,13 +23,13 @@ public class ModCraftingEvents {
 
         // クラフトされたアイテムが "CHOCOLATE" かどうかを確認
         if (craftedItem.getItem() == ModItems.CHOCOLATE.get()) {
-            // プレイヤーデータに記録する
-            player.getPersistentData().putBoolean("crafted_chocolate", true);
 
             // 初回クラフト時にメッセージを表示 TODO メッセージを画面中央に大きく
             if (!player.getPersistentData().getBoolean("crafted_chocolate_message_shown")) {
                 player.getPersistentData().putBoolean("crafted_chocolate_message_shown", true);
-                player.sendSystemMessage(Component.literal("初めてチョコレートをクラフトしました！"));
+                // テレポートアイテムを付与
+                player.getInventory().add(new ItemStack(ModItems.TELEPORT_ITEM.get()));
+                player.sendSystemMessage(Component.literal("チョコミッション開始！"));
             }
         }
     }
