@@ -1,24 +1,13 @@
 {
-  "type": "minecraft:overworld",
+  "type": "chocolatemod:chocolate_dimension_type",
   "generator": {
     "type": "minecraft:flat",
     "settings": {
-      "biome": "minecraft:plains",
-      "lakes": false,
-      "features": false,
+      "biome": "minecraft:mushroom_fields",
       "layers": [
-        {
-          "height": 2,
-          "block": "minecraft:bedrock"
-        },
-        {
-          "height": 60,
-          "block": "minecraft:dirt"
-        },
-        {
-          "height": 1,
-          "block": "minecraft:grass_block"
-        }
+        { "height": 1, "block": "minecraft:bedrock" },
+        { "height": 60, "block": "minecraft:dirt" },
+        { "height": 1, "block": "minecraft:grass_block" }
       ]
     }
   }

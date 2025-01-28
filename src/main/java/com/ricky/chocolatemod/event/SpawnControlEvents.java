@@ -6,6 +6,7 @@ import com.ricky.chocolatemod.entity.monster.CrowedMonster;
 import com.ricky.chocolatemod.entity.monster.SugarSlime;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,9 +14,15 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = ChocolateMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SpawnControlEvents {
-
     @SubscribeEvent
     public static void onCheckSpawn(MobSpawnEvent event) {
+        if (event.getLevel() instanceof Level level) {
+            // チョコレート次元にスポーンしないようにする
+            if (level.dimension().location().toString().equals("chocolatemod:chocolate_dimension")) {
+                event.setResult(MobSpawnEvent.Result.DENY);
+                return;
+            }
+        }
         // スポーンしようとしているエンティティがモンスターカテゴリに属しているかを確認
         if (event.getEntity().getType().getCategory() == MobCategory.MONSTER) {
             // ワールドにいるSugarSlimeの数を取得
