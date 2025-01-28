@@ -50,7 +50,7 @@ public class TeleportItem extends Item {
                     );
                     ServerLevel chocolateLevel = serverPlayer.getServer().getLevel(customDimensionKey);
                     if (chocolateLevel != null) {
-                        serverPlayer.teleportTo(chocolateLevel, 20.5, 102, 230.5, pPlayer.getYRot(), pPlayer.getXRot());
+                        serverPlayer.teleportTo(chocolateLevel, 20.5, 102, 23.5, pPlayer.getYRot(), pPlayer.getXRot());
                     }
                 }
             }

@@ -1,11 +1,14 @@
 package com.ricky.chocolatemod.event;
 
 import com.ricky.chocolatemod.ChocolateMod;
+import com.ricky.chocolatemod.entity.ModEntities;
+import com.ricky.chocolatemod.entity.monster.CrowedWither;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
@@ -24,10 +27,14 @@ public class CustomStructureSpawner {
         if (event.getLevel().isClientSide()) return;
 
         if (event.getLevel() instanceof ServerLevel serverLevel) {
-            System.out.println("structure");
             // ディメンションをチェック
             if (serverLevel.dimension().location().toString().equals("chocolatemod:chocolate_dimension")) {
-                System.out.println("place shop");
+                // 生成済みか確認する
+                BlockPos pos= new BlockPos(200, 100, 0);
+                if (serverLevel.getBlockState(pos).is(Blocks.BEDROCK)) {
+                    System.out.println("Skipping structure and wither generation.");
+                    return;
+                }
                 // 構造物を配置する座標 (例: 0, 100, 0)
                 BlockPos structurePosition = new BlockPos(0, 100, 0);
 
@@ -88,7 +95,7 @@ public class CustomStructureSpawner {
     }
 
     private static void spawnWither(ServerLevel level, BlockPos position) {
-        WitherBoss wither = new WitherBoss(EntityType.WITHER,level);
+        CrowedWither wither = new CrowedWither(ModEntities.CROWED_WITHER.get(),level);
         wither.setPos(position.getX() + 0.5, position.getY(), position.getZ() + 0.5); // 中心座標に配置
 
         // ウィザーをワールドに追加
