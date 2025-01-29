@@ -5,6 +5,7 @@ import com.ricky.chocolatemod.entity.ModEntities;
 import com.ricky.chocolatemod.entity.monster.CrowedMonster;
 import com.ricky.chocolatemod.entity.monster.SugarSlime;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.FakePlayer;
@@ -25,16 +26,19 @@ public class SpawnControlEvents {
         }
         // スポーンしようとしているエンティティがモンスターカテゴリに属しているかを確認
         if (event.getEntity().getType().getCategory() == MobCategory.MONSTER) {
-            // ワールドにいるSugarSlimeの数を取得
-            int count = event.getEntity().level().getEntitiesOfClass(SugarSlime.class, event.getEntity().getBoundingBox().inflate(50)).size();
-            // 一定数以上の場合、スポーンをキャンセル
-            if (count >= 4) {
-                event.setResult(MobSpawnEvent.Result.DENY);
-            } else{
-                return;
+            if (event.getEntity().getType() == ModEntities.SUGAR_SLIME.get()){
+                // ワールドにいるSugarSlimeの数を取得
+                int count = event.getEntity().level().getEntitiesOfClass(SugarSlime.class, event.getEntity().getBoundingBox().inflate(50)).size();
+                // 一定数以上の場合、スポーンをキャンセル
+                if (count >= 4) {
+                    event.setResult(MobSpawnEvent.Result.DENY);
+                } else{
+                    return;
+                }
             }
 
-            if (event.getEntity().getType() != ModEntities.CROWED_MONSTER.get()){
+
+            if (event.getEntity().getType() == ModEntities.CROWED_MONSTER.get()){
                 // ワールド内のプレイヤーを取得
                 boolean allowSpawn = event.getEntity().level().players().stream().anyMatch(player -> {
                     // FakePlayerを無視し、プレイヤーのカスタムデータを確認
@@ -45,9 +49,10 @@ public class SpawnControlEvents {
                     return player.getPersistentData().getBoolean("crafted_chocolate_message_shown");
                 });
                 if(allowSpawn) {
-                    count = event.getEntity().level().getEntitiesOfClass(CrowedMonster.class, event.getEntity().getBoundingBox().inflate(50)).size();
+                    int count = event.getEntity().level().getEntitiesOfClass(CrowedMonster.class, event.getEntity().getBoundingBox().inflate(50)).size();
                     // 一定数以上の場合、スポーンをキャンセル
-                    if (count >= 4) {
+                    if (count >= 10 || event.getEntity().getType() == EntityType.ZOMBIE) {
+                        event.setResult(MobSpawnEvent.Result.DENY);
                         event.setResult(MobSpawnEvent.Result.DENY);
                     } else{
                         return;

@@ -15,7 +15,7 @@ public class SpawnData {
 
 
         builder.addSpawn  (MobCategory.MONSTER,new SpawnerData(ModEntities.SUGAR_SLIME.get(), 5, 1, 1));
-        builder.addSpawn  (MobCategory.MONSTER,new SpawnerData(ModEntities.CROWED_MONSTER.get(), 5, 1, 1));
+        builder.addSpawn  (MobCategory.MONSTER,new SpawnerData(ModEntities.CROWED_MONSTER.get(), 15, 1, 1));
 
     }
 }

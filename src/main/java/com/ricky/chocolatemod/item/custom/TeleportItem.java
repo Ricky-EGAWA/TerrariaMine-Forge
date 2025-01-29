@@ -38,7 +38,7 @@ public class TeleportItem extends Item {
                 System.out.println(pPlayer.position());
                 if (pPlayer instanceof ServerPlayer serverPlayer) {
                     if (reLevel != null) {
-                        serverPlayer.teleportTo(reLevel, rePos.getX(), rePos.getY(), rePos.getZ(), pPlayer.getYRot(), pPlayer.getXRot());
+                        serverPlayer.teleportTo(reLevel, rePos.getX(), rePos.getY()+1, rePos.getZ(), pPlayer.getYRot(), pPlayer.getXRot());
                     }
                 }
             }else{

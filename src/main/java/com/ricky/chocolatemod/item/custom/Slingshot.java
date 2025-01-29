@@ -2,6 +2,8 @@ package com.ricky.chocolatemod.item.custom;
 
 import com.ricky.chocolatemod.entity.projectile.MyArrowEntity;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -19,6 +21,13 @@ public class Slingshot extends BowItem {
     public Slingshot() {
         super(pProperties);
     }
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+        pPlayer.startUsingItem(pHand); // 右クリック長押しを開始
+        return InteractionResultHolder.consume(itemstack);
+    }
+
 
     @Override
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
