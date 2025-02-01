@@ -58,7 +58,7 @@ public class ExchangeOrePickaxeRenderer implements BlockEntityRenderer<ExchangeO
 
         // テキストを描画する文字列
         String text = "クリスタルチョコピッケル";
-        String cost = "200000";
+        String cost = "214000";
 
         // 各方向に合わせた回転角度
         int[] rotations = {0, 90, 180, 270}; // 北 (0度), 東 (90度), 南 (180度), 西 (270度)

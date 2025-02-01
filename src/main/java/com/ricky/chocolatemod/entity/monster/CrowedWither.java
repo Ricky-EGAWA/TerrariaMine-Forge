@@ -7,7 +7,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 
 public class CrowedWither extends WitherBoss {
@@ -25,7 +24,5 @@ public class CrowedWither extends WitherBoss {
         if (itementity != null) {
             itementity.setExtendedLifetime();
         }
-
     }
-
 }

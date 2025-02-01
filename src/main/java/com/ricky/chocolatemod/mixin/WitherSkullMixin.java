@@ -25,13 +25,13 @@ public abstract class WitherSkullMixin {
                 var damageSources = ((WitherSkull) (Object) this).level().damageSources();
 
                 if (owner instanceof LivingEntity livingOwner) {
-                    damageApplied = target.hurt(damageSources.witherSkull((WitherSkull) (Object) this, livingOwner), 3);
+                    damageApplied = target.hurt(damageSources.witherSkull((WitherSkull) (Object) this, livingOwner), 2);
                     if (damageApplied) {
                         // カスタムエフェクトを付与
                         livingTarget.addEffect(new MobEffectInstance(ModEffects.ALONG.get(), 200, 1), livingOwner);
                     }
                 } else {
-                    target.hurt(damageSources.magic(), 1.5f);
+                    target.hurt(damageSources.magic(), 1f);
                 }
             }
 
