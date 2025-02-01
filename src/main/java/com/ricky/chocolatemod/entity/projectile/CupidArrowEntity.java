@@ -1,7 +1,6 @@
 package com.ricky.chocolatemod.entity.projectile;
 
 import com.ricky.chocolatemod.entity.ModEntities;
-import com.ricky.chocolatemod.util.ChangeChocolate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
@@ -10,46 +9,60 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
-public class BombEntity extends ThrowableItemProjectile {
-    private int explosionRadius = 4;
-    public BombEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+public class CupidArrowEntity extends AbstractArrow {
+    private int explosionRadius = 5;
+    public CupidArrowEntity(EntityType<? extends AbstractArrow> entityType, Level world) {
+        super(entityType, world);
     }
-
-    public BombEntity(Level pLevel, LivingEntity livingEntity) {
-        super(ModEntities.BOMB.get(), livingEntity, pLevel);
+    public CupidArrowEntity(Level pLevel, LivingEntity livingEntity){
+        super(ModEntities.CUPID_ARROW.get(), livingEntity, pLevel);
     }
 
     @Override
-    protected Item getDefaultItem() {
+    protected void tickDespawn() {
+        // 独自の消滅条件を設定することもできます
+        super.tickDespawn();
+    }
+
+    @Override
+    public void tick(){
+        super.tick();
+        this.setNoGravity(true); // 重力を完全無効化
+    }
+
+    @Override
+    protected ItemStack getPickupItem() {
         return null;
     }
 
+    // カスタム処理を追加するメソッドもオーバーライドできます
     @Override
     protected void onHitBlock(BlockHitResult pResult) {
-        BlockPos impactPos = pResult.getBlockPos();
         Level level = this.level();
-        if (!this.level().isClientSide()) {
-            effect(impactPos);
-            // 半径5マス内のブロックを変換
-            for (int x = -explosionRadius; x <= explosionRadius; x++) {
-                for (int y = -explosionRadius; y <= explosionRadius; y++) {
-                    for (int z = -explosionRadius; z <= explosionRadius; z++) {
-                        BlockPos nearbyPos = impactPos.offset(x, y, z);
-                        ChangeChocolate.change(level, nearbyPos, false);
-                    }
-                }
-            }
-            // 半径5マス内のエンティティにダメージを与える
-            level.getEntities(this, this.getBoundingBox().inflate(explosionRadius), entity -> !(entity instanceof Player))
-                    .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 24.0F)); // ハート12個分のダメージ
+        if(level.isClientSide){
+            return;
         }
+        effect(pResult.getBlockPos());
+        level.getEntities(this, this.getBoundingBox().inflate(explosionRadius), entity -> !(entity instanceof Player))
+                .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 100));
+        this.discard();
+    }
+    @Override
+    protected void onHitEntity(EntityHitResult pResult){
+        Level level = this.level();
+        if(level.isClientSide){
+            return;
+        }
+        effect(pResult.getEntity().blockPosition());
+        level.getEntities(this, this.getBoundingBox().inflate(explosionRadius), entity -> !(entity instanceof Player))
+                .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 100));
         this.discard();
     }
     private void effect(BlockPos impactPos){
@@ -77,6 +90,7 @@ public class BombEntity extends ThrowableItemProjectile {
                 false // 距離減衰の適用
         );
     }
+
     public void spawnParticleForAllPlayers(Vec3 position) {
         // プレイヤーリストを取得
         MinecraftServer server = this.getServer();

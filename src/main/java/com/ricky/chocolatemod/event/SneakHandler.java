@@ -42,6 +42,9 @@ public class SneakHandler {
         if (player.isCrouching()){
             // OrePickaxe を持ってスニークしている場合
             Level level = player.level();
+            if (level.dimension().location().toString().equals("chocolatemod:chocolate_dimension")){
+                return;
+            }
             BlockPos playerPos = player.blockPosition();
             if (mainHandItem.getItem() instanceof OrePickaxe) {
                 // プレイヤー周囲 2 ブロック以内を探索

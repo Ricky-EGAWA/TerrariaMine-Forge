@@ -28,7 +28,7 @@ public class ChocolateBomb extends Item {
         if (!pLevel.isClientSide) {
             BombEntity dice = new BombEntity(pLevel, pPlayer);
             dice.setItem(itemstack);
-            dice.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 0.5F, 1.0F);
+            dice.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0F, 1.0F, 1.0F);
             pLevel.addFreshEntity(dice);
         }
 

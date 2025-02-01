@@ -11,6 +11,7 @@ import com.ricky.chocolatemod.entity.ModEntities;
 import com.ricky.chocolatemod.entity.monster.CrowedMonsterRenderer;
 import com.ricky.chocolatemod.entity.monster.CrowedWitherRenderer;
 import com.ricky.chocolatemod.entity.monster.SugarSlimeRenderer;
+import com.ricky.chocolatemod.entity.projectile.CupidArrowRenderer;
 import com.ricky.chocolatemod.entity.projectile.HurricaneRenderer;
 import com.ricky.chocolatemod.entity.projectile.MagicEntityRenderer;
 import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
@@ -85,6 +86,7 @@ public class ChocolateMod {
 
             // クライアント側のセットアップでレンダラーを登録
             EntityRenderers.register(ModEntities.MY_ARROW.get(), MyArrowRenderer::new);
+            EntityRenderers.register(ModEntities.CUPID_ARROW.get(), CupidArrowRenderer::new);
             EntityRenderers.register(ModEntities.BOMB.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.SUGAR_SLIME.get(), SugarSlimeRenderer::new);
             EntityRenderers.register(ModEntities.CROWED_MONSTER.get(), CrowedMonsterRenderer::new);
@@ -97,6 +99,7 @@ public class ChocolateMod {
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_HEALER_BLOCK_ENTITY.get(), ExchangeHealerRenderer::new);
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_HURRICANE_BLOCK_ENTITY.get(), ExchangeHurricaneRenderer::new);
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_BOMB_BLOCK_ENTITY.get(), ExchangeBombRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_CUPID_BLOCK_ENTITY.get(), ExchangeCupidRenderer::new);
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_SWORD_BLOCK_ENTITY.get(), ExchangeSwordRenderer::new);
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_SLINGSHOT_BLOCK_ENTITY.get(), ExchangeSlingshotRenderer::new);
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_MAGIC_BLOCK_ENTITY.get(), ExchangeMagicRenderer::new);

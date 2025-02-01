@@ -8,6 +8,7 @@
   "item.chocolatemod.healer": "Crowed Healer",
   "item.chocolatemod.hurricane": "Chocolate Storm",
   "item.chocolatemod.magic": "Magical Chocolate Wand",
+  "item.chocolatemod.cupid": "Bow of Cupid",
   "item.chocolatemod.teleport": "Shop",
   "creativetab.mod_item_tab": "Mod Items",
 
@@ -24,6 +25,7 @@
   "block.chocolatemod.exchange_ore_pickaxe": "Cristal Chocolate Pickaxe Exchange Block",
   "block.chocolatemod.exchange_slingshot": "Chocolate Slingshot Exchange Block",
   "block.chocolatemod.exchange_sword": "Chocolate Excalibur Exchange Block",
+  "block.chocolatemod.exchange_cupid": "Bow of Cupid Exchange Block",
 
   "entity.chocolatemod.sugar_slime": "Sugar Slime",
   "entity.chocolatemod.crowed_monster": "Crowed Monster",

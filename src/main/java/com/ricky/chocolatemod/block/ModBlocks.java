@@ -61,6 +61,12 @@ public class ModBlocks {
     public static final RegistryObject<BlockEntityType<ExchangeBombBlockEntity>> EXCHANGE_BOMB_BLOCK_ENTITY =
             BLOCK_ENTITY_TYPES.register("exchange_bomb",
                     () -> BlockEntityType.Builder.of(ExchangeBombBlockEntity::new, ModBlocks.EXCHANGE_BOMB.get()).build(null));
+
+    public static final RegistryObject<Block> EXCHANGE_CUPID = registerBlock("exchange_cupid",
+            () -> new ExchangeCupid(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
+    public static final RegistryObject<BlockEntityType<ExchangeCupidBlockEntity>> EXCHANGE_CUPID_BLOCK_ENTITY =
+            BLOCK_ENTITY_TYPES.register("exchange_cupid",
+                    () -> BlockEntityType.Builder.of(ExchangeCupidBlockEntity::new, ModBlocks.EXCHANGE_CUPID.get()).build(null));
     public static final RegistryObject<Block> EXCHANGE_SWORD = registerBlock("exchange_sword",
             () -> new ExchangeSword(BlockBehaviour.Properties.copy(Blocks.BEDROCK)));
     public static final RegistryObject<BlockEntityType<ExchangeSwordBlockEntity>> EXCHANGE_SWORD_BLOCK_ENTITY =

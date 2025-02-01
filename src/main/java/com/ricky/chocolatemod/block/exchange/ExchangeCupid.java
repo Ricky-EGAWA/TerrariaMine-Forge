@@ -1,6 +1,6 @@
 package com.ricky.chocolatemod.block.exchange;
 
-import com.ricky.chocolatemod.block.entity.ExchangeHealerBlockEntity;
+import com.ricky.chocolatemod.block.entity.ExchangeCupidBlockEntity;
 import com.ricky.chocolatemod.item.ModItems;
 import com.ricky.chocolatemod.util.ChocolateCounter;
 import net.minecraft.core.BlockPos;
@@ -16,22 +16,22 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class ExchangeHealer extends Block implements EntityBlock {
-    public ExchangeHealer(Properties properties) {
+public class ExchangeCupid extends Block implements EntityBlock {
+    public ExchangeCupid(Properties properties) {
         super(properties);
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!level.isClientSide && ChocolateCounter.getInstance().useChocolate(50000)) {
+        if (!level.isClientSide && ChocolateCounter.getInstance().useChocolate(5000)) {
             // プレイヤーにアイテムを渡す
-            ItemStack healer = new ItemStack(ModItems.HEALER.get());
-            if (!player.getInventory().add(healer)) {
-                player.drop(healer, false); // インベントリがいっぱいならドロップ
+            ItemStack cupid = new ItemStack(ModItems.CUPID.get());
+            if (!player.getInventory().add(cupid)) {
+                player.drop(cupid, false); // インベントリがいっぱいならドロップ
             }
             return InteractionResult.SUCCESS;
         }
-        if (level.isClientSide && ChocolateCounter.getInstance().getChocolate()>=50000){
+        if (level.isClientSide && ChocolateCounter.getInstance().getChocolate()>=5000){
             // クライアント側でパーティクルを表示
             spawnHeartParticles(level, pos);
         }
@@ -40,7 +40,7 @@ public class ExchangeHealer extends Block implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState state) {
-        return new ExchangeHealerBlockEntity(blockPos, state);
+        return new ExchangeCupidBlockEntity(blockPos, state);
     }
     private void spawnHeartParticles(Level level, BlockPos pos) {
         if (level.isClientSide) {

@@ -43,12 +43,15 @@ public class HurricaneEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
+        if(this.velocity==null){
+            this.velocity = new Vec3(0,0,0);
+        }
         BlockPos blockPos = this.getOnPos();
         Level level = this.level();
         // ブロックを変換
-        for (int x = -8; x <= 8; x++) {
+        for (int x = -13; x <= 13; x++) {
             for (int y = 0; y <= 19; y++) {
-                for (int z = -8; z <= 8; z++) {
+                for (int z = -13; z <= 13; z++) {
                     BlockPos nearbyPos = blockPos.offset(x, y, z);
                     ChangeChocolate.change(level, nearbyPos, false);
                 }
@@ -72,7 +75,7 @@ public class HurricaneEntity extends Entity {
             this.lifeTime--;
 
             // プレイヤー以外のエンティティを検出して上方向に飛ばす
-            level.getEntities(this, this.getBoundingBox().inflate(8, 8, 8),
+            level.getEntities(this, this.getBoundingBox().inflate(13, 13, 13),
                             entity -> !(entity instanceof Player) && (entity instanceof LivingEntity)) // nullチェック追加
                     .forEach(entity -> {
                         if (entity.isAlive()) { // エンティティが生存しているか確認

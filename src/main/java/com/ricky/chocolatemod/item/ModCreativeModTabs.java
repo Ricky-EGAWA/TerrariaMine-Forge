@@ -23,6 +23,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.ORE_PICKAXE.get());
                         pOutput.accept(ModItems.CHOCOLATE_SWORD.get());
                         pOutput.accept(ModItems.CHOCOLATE_SLINGSHOT.get());
+                        pOutput.accept(ModItems.CUPID.get());
                         pOutput.accept(ModBlocks.CHOCOLATE_BLOCK.get());
                         pOutput.accept(ModBlocks.DIAMOND_CHOCOLATE_BLOCK.get());
                         pOutput.accept(ModBlocks.EMERALD_CHOCOLATE_BLOCK.get());
@@ -38,6 +39,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.EXCHANGE_HEALER.get());
                         pOutput.accept(ModBlocks.EXCHANGE_HURRICANE.get());
                         pOutput.accept(ModBlocks.EXCHANGE_BOMB.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_CUPID.get());
                         pOutput.accept(ModBlocks.EXCHANGE_SWORD.get());
                         pOutput.accept(ModBlocks.EXCHANGE_SLINGSHOT.get());
                         pOutput.accept(ModBlocks.EXCHANGE_MAGIC.get());

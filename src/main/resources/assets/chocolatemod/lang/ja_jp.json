@@ -8,6 +8,7 @@
   "item.chocolatemod.healer": "クロウドヒーラー",
   "item.chocolatemod.hurricane": "チョコストーム",
   "item.chocolatemod.magic": "マジカルチョコステッキ",
+  "item.chocolatemod.cupid": "キューピットの弓",
   "item.chocolatemod.teleport": "商店",
   "creativetab.mod_item_tab": "モッドアイテム",
 
@@ -24,6 +25,7 @@
   "block.chocolatemod.exchange_ore_pickaxe": "クリスタルチョコピッケル交換",
   "block.chocolatemod.exchange_slingshot": "チョコスリングショット交換",
   "block.chocolatemod.exchange_sword": "チョコレートキャリバー交換",
+  "block.chocolatemod.exchange_cupid": "キューピットの弓交換",
 
   "entity.chocolatemod.sugar_slime": "シュガースライム",
   "entity.chocolatemod.crowed_monster": "クロウドモンスター",

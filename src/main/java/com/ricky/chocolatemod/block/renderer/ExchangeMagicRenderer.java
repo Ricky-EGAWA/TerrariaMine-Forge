@@ -58,7 +58,7 @@ public class ExchangeMagicRenderer implements BlockEntityRenderer<ExchangeMagicB
 
         // テキストを描画する文字列
         String text = "マジカルチョコステッキ";
-        String cost = "100";
+        String cost = "1000";
 
         // 各方向に合わせた回転角度
         int[] rotations = {0, 90, 180, 270}; // 北 (0度), 東 (90度), 南 (180度), 西 (270度)

@@ -17,6 +17,9 @@ public class PlayerWalkEvent {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (!event.player.getPersistentData().getBoolean("crafted_chocolate_message_shown")) {
+            return;
+        }
         // サーバー側のみ処理
         if (!event.player.level().isClientSide && event.phase == TickEvent.Phase.END) {
             // プレイヤーの足元の位置を取得

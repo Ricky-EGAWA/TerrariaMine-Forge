@@ -21,6 +21,8 @@ public class ModItems {
             ChocolateSword::new);
     public static final RegistryObject<Item> CHOCOLATE_SLINGSHOT = ITEMS.register("chocolate_slingshot",
             Slingshot::new);
+    public static final RegistryObject<Item> CUPID = ITEMS.register("cupid",
+            Cupid::new);
     public static final RegistryObject<Item> CHOCOLATE_BOMB = ITEMS.register("chocolate_bomb",
             () -> new ChocolateBomb(new Item.Properties()));
     public static final RegistryObject<Item> HEALER = ITEMS.register("healer",

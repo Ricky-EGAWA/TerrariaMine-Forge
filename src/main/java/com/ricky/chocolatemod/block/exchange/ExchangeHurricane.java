@@ -31,11 +31,25 @@ public class ExchangeHurricane extends Block implements EntityBlock {
             }
             return InteractionResult.SUCCESS;
         }
+        if (level.isClientSide && ChocolateCounter.getInstance().getChocolate()>=10000){
+            // クライアント側でパーティクルを表示
+            spawnHeartParticles(level, pos);
+        }
         return InteractionResult.CONSUME; // クライアント側での効果
     }
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState state) {
         return new ExchangeHurricaneBlockEntity(blockPos, state);
+    }
+    private void spawnHeartParticles(Level level, BlockPos pos) {
+        if (level.isClientSide) {
+            for (int i = 0; i < 5; i++) { // 5つのハートパーティクル
+                double x = pos.getX() + 0.5 + (Math.random() - 0.5) * 0.7;
+                double y = pos.getY() + 1.8;
+                double z = pos.getZ() + 0.5 + (Math.random() - 0.5) * 0.7;
+                level.addParticle(net.minecraft.core.particles.ParticleTypes.HEART, x, y, z, 0, 0, 0);
+            }
+        }
     }
 }

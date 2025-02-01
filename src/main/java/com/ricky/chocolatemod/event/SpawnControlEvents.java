@@ -30,7 +30,7 @@ public class SpawnControlEvents {
                 // ワールドにいるSugarSlimeの数を取得
                 int count = event.getEntity().level().getEntitiesOfClass(SugarSlime.class, event.getEntity().getBoundingBox().inflate(50)).size();
                 // 一定数以上の場合、スポーンをキャンセル
-                if (count >= 4) {
+                if (count >= 2) {
                     event.setResult(MobSpawnEvent.Result.DENY);
                 } else{
                     return;

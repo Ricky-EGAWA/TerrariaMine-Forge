@@ -4,10 +4,7 @@ import com.ricky.chocolatemod.ChocolateMod;
 import com.ricky.chocolatemod.entity.monster.CrowedMonster;
 import com.ricky.chocolatemod.entity.monster.CrowedWither;
 import com.ricky.chocolatemod.entity.monster.SugarSlime;
-import com.ricky.chocolatemod.entity.projectile.BombEntity;
-import com.ricky.chocolatemod.entity.projectile.HurricaneEntity;
-import com.ricky.chocolatemod.entity.projectile.MagicEntity;
-import com.ricky.chocolatemod.entity.projectile.MyArrowEntity;
+import com.ricky.chocolatemod.entity.projectile.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,6 +19,10 @@ public class ModEntities {
     public static final RegistryObject<EntityType<MyArrowEntity>> MY_ARROW =
             ENTITY_TYPES.register("slingshot", () -> EntityType.Builder.<MyArrowEntity>of(MyArrowEntity::new, MobCategory.MISC)
                     .sized(0.5f, 0.5f).build("slingshot"));
+
+    public static final RegistryObject<EntityType<CupidArrowEntity>> CUPID_ARROW =
+            ENTITY_TYPES.register("cupid", () -> EntityType.Builder.<CupidArrowEntity>of(CupidArrowEntity::new, MobCategory.MISC)
+                    .sized(0.5f, 0.5f).build("cupid"));
 
     public static final RegistryObject<EntityType<BombEntity>> BOMB =
             ENTITY_TYPES.register("bomb", () -> EntityType.Builder.<BombEntity>of(BombEntity::new, MobCategory.MISC)
