@@ -23,15 +23,15 @@ public class ExchangeHealer extends Block implements EntityBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!level.isClientSide && ChocolateCounter.getInstance().useChocolate(50000)) {
+        if (!level.isClientSide && ChocolateCounter.getInstance().useChocolate(100000)) {
             // プレイヤーにアイテムを渡す
-            ItemStack healer = new ItemStack(ModItems.HEALER.get());
+            ItemStack healer = new ItemStack(ModItems.GOLDEN_ROCKET.get());
             if (!player.getInventory().add(healer)) {
                 player.drop(healer, false); // インベントリがいっぱいならドロップ
             }
             return InteractionResult.SUCCESS;
         }
-        if (level.isClientSide && ChocolateCounter.getInstance().getChocolate()>=50000){
+        if (level.isClientSide && ChocolateCounter.getInstance().getChocolate()>=100000){
             // クライアント側でパーティクルを表示
             spawnHeartParticles(level, pos);
         }

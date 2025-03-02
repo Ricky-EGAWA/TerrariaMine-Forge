@@ -20,9 +20,17 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class TeleportItem extends Item {
+    private static TeleportItem instance; // シングルトンインスタンス
+
     public TeleportItem(Properties properties) {
         super(properties);
+        instance = this;
     }
+
+    public static TeleportItem getInstance() {
+        return instance;
+    }
+
     public BlockPos rePos;
     public ServerLevel reLevel;
 
@@ -33,9 +41,7 @@ public class TeleportItem extends Item {
         Level level = pPlayer.level();
 
         if (!level.isClientSide) {
-            // プレイヤーがchocolate dimensionにいるか確認
             if (level.dimension().location().toString().equals("chocolatemod:chocolate_dimension")) {
-                System.out.println(pPlayer.position());
                 if (pPlayer instanceof ServerPlayer serverPlayer) {
                     if (reLevel != null) {
                         serverPlayer.teleportTo(reLevel, rePos.getX(), rePos.getY()+1, rePos.getZ(), pPlayer.getYRot(), pPlayer.getXRot());
@@ -56,13 +62,10 @@ public class TeleportItem extends Item {
             }
         }
 
-
-        // アイテムの使用結果を返す
         return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());
     }
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        // 翻訳可能なテキストをツールチップに追加
         tooltip.add(Component.translatable("item.chocolatemod.teleport_item.tooltip"));
     }
 }

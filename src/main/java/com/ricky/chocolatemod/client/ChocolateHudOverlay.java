@@ -11,7 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ChocolateHudOverlay {
-    private static final ResourceLocation ICONS = new ResourceLocation(ChocolateMod.MOD_ID, "textures/item/chocolate.png");
+    private static final ResourceLocation ICONS = new ResourceLocation("textures/item/gold_ingot.png");
     private final Minecraft minecraft = Minecraft.getInstance();
 
     public ChocolateHudOverlay() {

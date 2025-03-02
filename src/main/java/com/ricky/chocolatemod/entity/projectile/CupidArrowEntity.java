@@ -1,6 +1,7 @@
 package com.ricky.chocolatemod.entity.projectile;
 
 import com.ricky.chocolatemod.entity.ModEntities;
+import com.ricky.chocolatemod.util.ChocolateCounter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
@@ -12,17 +13,21 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
 public class CupidArrowEntity extends AbstractArrow {
     private int explosionRadius = 5;
+    Player player;
     public CupidArrowEntity(EntityType<? extends AbstractArrow> entityType, Level world) {
         super(entityType, world);
     }
     public CupidArrowEntity(Level pLevel, LivingEntity livingEntity){
         super(ModEntities.CUPID_ARROW.get(), livingEntity, pLevel);
+        player = (Player) livingEntity;
     }
 
     @Override
@@ -49,10 +54,22 @@ public class CupidArrowEntity extends AbstractArrow {
         if(level.isClientSide){
             return;
         }
-        effect(pResult.getBlockPos());
-        level.getEntities(this, this.getBoundingBox().inflate(explosionRadius), entity -> !(entity instanceof Player))
-                .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 100));
-        this.discard();
+//        BlockPos hitPos = pResult.getBlockPos();
+//        BlockState blockState = level.getBlockState(hitPos);
+//        effect(hitPos);
+//        if (!player.getPersistentData().getBoolean("finish_shooting_event")){
+//            // ターゲットブロックかどうか確認
+//            if (blockState.getBlock() == Blocks.TARGET) {
+//                // もしターゲットブロックならば、処理を行う
+//                System.out.println("Hit a Target Block at: " + hitPos);
+//                ChocolateCounter.getInstance().shootEvent(player);
+//                this.discard();
+//            }
+//        } else{
+//            level.getEntities(this, this.getBoundingBox().inflate(explosionRadius), entity -> !(entity instanceof Player))
+//                    .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 100));
+//            this.discard();
+//        }
     }
     @Override
     protected void onHitEntity(EntityHitResult pResult){

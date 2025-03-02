@@ -44,7 +44,7 @@ public class ExchangeSlingshotRenderer implements BlockEntityRenderer<ExchangeSl
         poseStack.mulPose(Axis.YP.rotationDegrees(angle * 3)); // Y軸回転
 
         // アイテムを描画
-        ItemStack itemStack = new ItemStack(ModItems.CHOCOLATE_SLINGSHOT.get());
+        ItemStack itemStack = new ItemStack(ModItems.GOLDEN_SLINGSHOT.get());
         BakedModel model = itemRenderer.getModel(itemStack, null, null, 0);
 
         // 最大ライティングを強制
@@ -57,8 +57,8 @@ public class ExchangeSlingshotRenderer implements BlockEntityRenderer<ExchangeSl
         poseStack.pushPose();
 
         // テキストを描画する文字列
-        String text = "チョコスリングショット";
-        String cost = "300";
+        String text = "金のパチンコ";
+        String cost = "1000";
 
         // 各方向に合わせた回転角度
         int[] rotations = {0, 90, 180, 270}; // 北 (0度), 東 (90度), 南 (180度), 西 (270度)

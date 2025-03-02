@@ -15,14 +15,18 @@ public class ModCreativeModTabs {
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ChocolateMod.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> MOD_ITEM_TAB = CREATE_MODE_TABS.register("mod_item_tab",
-            () -> CreativeModeTab.builder().icon(()-> new ItemStack(ModItems.CHOCOLATE.get()))
+            () -> CreativeModeTab.builder().icon(()-> new ItemStack(ModItems.GOLDEN_EGG.get()))
                     .title(Component.translatable("creativetab.mod_item_tab"))
                     .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(ModItems.CHOCOLATE.get());
-                        pOutput.accept(ModItems.VALENTINE_CHOCOLATE.get());
+                        pOutput.accept(ModItems.GOLDEN_EATER.get());
+                        pOutput.accept(ModItems.GOLDEN_APPLE.get());
+                        pOutput.accept(ModItems.GOLDEN_ELYTRA.get());
+                        pOutput.accept(ModItems.GOLDEN_ROCKET.get());
+                        pOutput.accept(ModItems.GOLD_MAN.get());
+
                         pOutput.accept(ModItems.ORE_PICKAXE.get());
                         pOutput.accept(ModItems.CHOCOLATE_SWORD.get());
-                        pOutput.accept(ModItems.CHOCOLATE_SLINGSHOT.get());
+                        pOutput.accept(ModItems.GOLDEN_SLINGSHOT.get());
                         pOutput.accept(ModItems.CUPID.get());
                         pOutput.accept(ModBlocks.CHOCOLATE_BLOCK.get());
                         pOutput.accept(ModBlocks.DIAMOND_CHOCOLATE_BLOCK.get());
@@ -30,13 +34,14 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModBlocks.GOLD_CHOCOLATE_BLOCK.get());
                         pOutput.accept(ModBlocks.IRON_CHOCOLATE_BLOCK.get());
                         pOutput.accept(ModBlocks.LAPIS_CHOCOLATE_BLOCK.get());
-                        pOutput.accept(ModItems.CHOCOLATE_BOMB.get());
+                        pOutput.accept(ModItems.GOLDEN_EGG.get());
                         pOutput.accept(ModItems.HEALER.get());
                         pOutput.accept(ModItems.HURRICANE.get());
                         pOutput.accept(ModItems.MAGIC.get());
                         pOutput.accept(ModItems.TELEPORT_ITEM.get());
                         pOutput.accept(ModBlocks.EXCHANGE_ORE_PICKAXE.get());
                         pOutput.accept(ModBlocks.EXCHANGE_HEALER.get());
+                        pOutput.accept(ModBlocks.EXCHANGE_START.get());
                         pOutput.accept(ModBlocks.EXCHANGE_HURRICANE.get());
                         pOutput.accept(ModBlocks.EXCHANGE_BOMB.get());
                         pOutput.accept(ModBlocks.EXCHANGE_CUPID.get());

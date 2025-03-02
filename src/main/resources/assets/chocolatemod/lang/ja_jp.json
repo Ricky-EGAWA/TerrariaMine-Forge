@@ -1,4 +1,13 @@
 {
+  "item.chocolatemod.golden_eater": "ゴールドイーター",
+  "item.chocolatemod.golden_egg": "金の卵",
+  "item.chocolatemod.golden_apple": "黄金のリンゴ",
+  "item.chocolatemod.golden_elytra": "金のエリトラ",
+  "item.chocolatemod.golden_rocket": "ヴォイドヒーラー",
+  "item.chocolatemod.gold_man": "スーパーゴールドマン",
+  "item.chocolatemod.golden_slingshot": "金のパチンコ",
+  "item.chocolatemod.gold_staff": "黄金の杖",
+
   "item.chocolatemod.chocolate": "チョコレート",
   "item.chocolatemod.valentine_chocolate": "バレンタインチョコ",
   "item.chocolatemod.ore_pickaxe": "クリスタルチョコピッケル",
@@ -34,9 +43,11 @@
   "item.chocolatemod.teleport_item.tooltip": "右クリックでショップへ移動/帰還",
   "item.chocolatemod.ore_pickaxe.tooltip": "しゃがむと鉱石ブロックを生成",
   "item.chocolatemod.hurricane.tooltip": "右クリックでチョコストームを召喚",
-  "item.chocolatemod.chocolate_bomb.tooltip": "右クリックでチョコボムを投げる",
+  "item.chocolatemod.chocolate_bomb.tooltip": "右クリックで投げる",
   "item.chocolatemod.slingshot.tooltip": "右クリックで発射",
   "item.chocolatemod.chocolate_sword.tooltip": "攻撃時にチョコブロックを生成",
   "item.chocolatemod.magic.tooltip": "右クリックで発射",
-  "item.chocolatemod.healer.tooltip": "右クリックで発射"
+  "item.chocolatemod.healer.tooltip": "右クリックで分身を召喚",
+  "item.chocolatemod.eat.tooltip": "右クリックで発射",
+  "item.chocolatemod.rocket.tooltip": "右クリックで発射、ロケット花火としても使える"
 }

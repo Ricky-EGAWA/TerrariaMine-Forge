@@ -17,12 +17,12 @@ public class CrowedWither extends WitherBoss {
     public boolean canBeAffected(MobEffectInstance pPotionEffect) {
         return pPotionEffect.getEffect() != ModEffects.ALONG.get() && super.canBeAffected(pPotionEffect);
     }
-    @Override
-    protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
-        super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
-        ItemEntity itementity = this.spawnAtLocation(ModItems.VALENTINE_CHOCOLATE.get());
-        if (itementity != null) {
-            itementity.setExtendedLifetime();
-        }
-    }
+//    @Override
+//    protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
+//        super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
+//        ItemEntity itementity = this.spawnAtLocation(ModItems.VALENTINE_CHOCOLATE.get());
+//        if (itementity != null) {
+//            itementity.setExtendedLifetime();
+//        }
+//    }
 }

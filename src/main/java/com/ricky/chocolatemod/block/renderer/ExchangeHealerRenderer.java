@@ -44,7 +44,7 @@ public class ExchangeHealerRenderer implements BlockEntityRenderer<ExchangeHeale
         poseStack.mulPose(Axis.YP.rotationDegrees(angle * 3)); // Y軸回転
 
         // アイテムを描画
-        ItemStack itemStack = new ItemStack(ModItems.HEALER.get());
+        ItemStack itemStack = new ItemStack(ModItems.GOLDEN_ROCKET.get());
         BakedModel model = itemRenderer.getModel(itemStack, null, null, 0);
 
         // 最大ライティングを強制
@@ -57,8 +57,8 @@ public class ExchangeHealerRenderer implements BlockEntityRenderer<ExchangeHeale
         poseStack.pushPose();
 
         // テキストを描画する文字列
-        String text = "クロウドヒーラー";
-        String cost = "50000";
+        String text = "ヴォイドヒーラー";
+        String cost = "100000";
 
         // 各方向に合わせた回転角度
         int[] rotations = {0, 90, 180, 270}; // 北 (0度), 東 (90度), 南 (180度), 西 (270度)

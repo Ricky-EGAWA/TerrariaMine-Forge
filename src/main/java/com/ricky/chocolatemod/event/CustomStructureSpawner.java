@@ -2,7 +2,7 @@ package com.ricky.chocolatemod.event;
 
 import com.ricky.chocolatemod.ChocolateMod;
 import com.ricky.chocolatemod.entity.ModEntities;
-import com.ricky.chocolatemod.entity.monster.CrowedWither;
+import com.ricky.chocolatemod.entity.monster.fighter.FighterEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +17,73 @@ import java.util.Optional;
 
 @Mod.EventBusSubscriber(modid = ChocolateMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CustomStructureSpawner {
+    @SubscribeEvent
+    public static void onServerStarted(net.minecraftforge.event.server.ServerStartedEvent event) {
+        ServerLevel serverLevel = event.getServer().overworld(); // オーバーワールドを取得
+        if (serverLevel.dimension().location().toString().equals("minecraft:overworld")){
+            System.out.println("start");
+            BlockPos pos= new BlockPos(0, 0, 0);
+            if (serverLevel.getBlockState(pos).is(Blocks.BEDROCK)) {
+                System.out.println("Skipping structure and wither generation.");
+                return;
+            }
+            serverLevel.setBlock(pos, Blocks.BEDROCK.defaultBlockState(), 3);
+            // 構造物のNBTファイルを読み込む
+            ResourceLocation structureLocation = new ResourceLocation(ChocolateMod.MOD_ID, "start");
+            // 構造物テンプレートを取得 (Optional)
+            Optional<StructureTemplate> optionalTemplate = serverLevel.getStructureManager().get(structureLocation);
+
+            ResourceLocation shootLocation = new ResourceLocation(ChocolateMod.MOD_ID, "shoot");
+            // 構造物テンプレートを取得 (Optional)
+            Optional<StructureTemplate> optionalTemplate2 = serverLevel.getStructureManager().get(shootLocation);
+
+            // スポーン地点を取得し、少し離れた位置に構造物を生成
+            BlockPos spawnPos = serverLevel.getSharedSpawnPos();
+            System.out.println(serverLevel.getSharedSpawnPos());
+
+            // 少し離れた位置に構造物を生成
+            spawnPos = spawnPos.offset(0, 0, 5);
+            BlockPos spawnPos2 = spawnPos.offset(0, 0, 10);
+
+            // 構造物を配置
+            if (optionalTemplate.isPresent()) {
+                // Optionalから構造物テンプレートを取得
+                StructureTemplate template = optionalTemplate.get();
+
+                // 構造物を指定位置に生成
+                template.placeInWorld(
+                        serverLevel,                    // 対象のレベル (ワールド)
+                        spawnPos,              // 配置座標
+                        spawnPos,              // ミラーリングや回転なし
+                        new StructurePlaceSettings(), // 配置設定
+                        serverLevel.random,             // ランダム
+                        2                               // フラグ (生成モード: 更新処理など)
+                );
+                System.out.println("start generated at " + spawnPos);
+            } else {
+                System.err.println("Failed to load structure template: " + structureLocation);
+            }
+            if (optionalTemplate2.isPresent()) {
+                // Optionalから構造物テンプレートを取得
+                StructureTemplate template = optionalTemplate2.get();
+
+                // 構造物を指定位置に生成
+                template.placeInWorld(
+                        serverLevel,                    // 対象のレベル (ワールド)
+                        spawnPos2,              // 配置座標
+                        spawnPos2,              // ミラーリングや回転なし
+                        new StructurePlaceSettings(), // 配置設定
+                        serverLevel.random,             // ランダム
+                        2                               // フラグ (生成モード: 更新処理など)
+                );
+                System.out.println("start generated at " + spawnPos2);
+            } else {
+                System.err.println("Failed to load structure template: " + structureLocation);
+            }
+
+        }
+    }
+
 
     @SubscribeEvent
     public static void onLevelLoad(LevelEvent.Load event) {
@@ -24,7 +91,47 @@ public class CustomStructureSpawner {
         if (event.getLevel().isClientSide()) return;
 
         if (event.getLevel() instanceof ServerLevel serverLevel) {
-            // ディメンションをチェック
+            if (serverLevel.dimension().location().toString().equals("minecraft:the_nether")) {
+                // 生成済みか確認する
+                BlockPos pos= new BlockPos(0, 48, 0);
+                if (serverLevel.getBlockState(pos).is(Blocks.BEDROCK)) {
+                    System.out.println("Skipping structure and wither generation.");
+                    return;
+                }
+                serverLevel.setBlock(pos, Blocks.BEDROCK.defaultBlockState(), 3);
+                // 構造物を配置する座標 (例: 0, 100, 0)
+                BlockPos structurePosition = new BlockPos(0, 50, 0);
+
+                // 構造物のResourceLocation (NBTファイルのパス)
+                ResourceLocation structureLocation = new ResourceLocation(ChocolateMod.MOD_ID, "fighter");
+
+                // 構造物テンプレートを取得 (Optional)
+                Optional<StructureTemplate> optionalTemplate = serverLevel.getStructureManager().get(structureLocation);
+
+                if (optionalTemplate.isPresent()) {
+                    // Optionalから構造物テンプレートを取得
+                    StructureTemplate template = optionalTemplate.get();
+
+                    // 構造物を指定位置に生成
+                    template.placeInWorld(
+                            serverLevel,                    // 対象のレベル (ワールド)
+                            structurePosition,              // 配置座標
+                            structurePosition,              // ミラーリングや回転なし
+                            new StructurePlaceSettings(), // 配置設定
+                            serverLevel.random,             // ランダム
+                            2                               // フラグ (生成モード: 更新処理など)
+                    );
+                    System.out.println("Structure generated at " + structurePosition);
+                } else {
+                    System.err.println("Failed to load structure template: " + structureLocation);
+                }
+
+                System.out.println("place boss");
+
+                // ウィザーを空間の中央にスポーン
+                spawnFighter(serverLevel, new BlockPos(29, 52, 19));
+            }
+                // ディメンションをチェック
             if (serverLevel.dimension().location().toString().equals("chocolatemod:chocolate_dimension")) {
                 // 生成済みか確認する
                 BlockPos pos= new BlockPos(200, 100, 0);
@@ -64,7 +171,7 @@ public class CustomStructureSpawner {
                 generateBedrockBox(serverLevel, new BlockPos(200, 100, 0), 50, 15, 50);
 
                 // ウィザーを空間の中央にスポーン
-                spawnWither(serverLevel, new BlockPos(225, 107, 25));
+//                spawnWither(serverLevel, new BlockPos(225, 107, 25));
             }
         }
     }
@@ -91,8 +198,8 @@ public class CustomStructureSpawner {
         System.out.println("Bedrock box generated from " + origin + " to " + end);
     }
 
-    private static void spawnWither(ServerLevel level, BlockPos position) {
-        CrowedWither wither = new CrowedWither(ModEntities.CROWED_WITHER.get(),level);
+    private static void spawnFighter(ServerLevel level, BlockPos position) {
+        FighterEntity wither = new FighterEntity(ModEntities.FIGHTER.get(),level);
         wither.setPos(position.getX() + 0.5, position.getY(), position.getZ() + 0.5); // 中心座標に配置
 
         // ウィザーをワールドに追加

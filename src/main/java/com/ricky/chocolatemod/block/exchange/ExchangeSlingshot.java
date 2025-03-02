@@ -23,15 +23,15 @@ public class ExchangeSlingshot extends Block implements EntityBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!level.isClientSide && ChocolateCounter.getInstance().useChocolate(300)) {
+        if (!level.isClientSide && ChocolateCounter.getInstance().useChocolate(1000)) {
             // プレイヤーにアイテムを渡す
-            ItemStack slingshot = new ItemStack(ModItems.CHOCOLATE_SLINGSHOT.get());
+            ItemStack slingshot = new ItemStack(ModItems.GOLDEN_SLINGSHOT.get());
             if (!player.getInventory().add(slingshot)) {
                 player.drop(slingshot, false); // インベントリがいっぱいならドロップ
             }
             return InteractionResult.SUCCESS;
         }
-        if (level.isClientSide && ChocolateCounter.getInstance().getChocolate()>=300){
+        if (level.isClientSide && ChocolateCounter.getInstance().getChocolate()>=1000){
             // クライアント側でパーティクルを表示
             spawnHeartParticles(level, pos);
         }

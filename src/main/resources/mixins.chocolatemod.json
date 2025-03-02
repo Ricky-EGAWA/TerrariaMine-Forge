@@ -5,13 +5,18 @@
   "refmap": "mixins.chocolatemod.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "FoodDataMixin",
+    "AttackMixin",
+    "EntityMixin",
+    "LivingEntityMixin",
+    "PlayerSkinMixin",
     "WitherSkullMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
-    "GuiMixin"
+    "GuiMixin",
+    "PlayerRendererMixin",
+    "VoidDragonRendererMixin"
   ]
 }

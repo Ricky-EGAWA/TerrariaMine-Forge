@@ -1,4 +1,13 @@
 {
+  "item.chocolatemod.golden_eater": "Golden Eater",
+  "item.chocolatemod.golden_apple": "Golden Apple",
+  "item.chocolatemod.golden_elytra": "Golden Elytra",
+  "item.chocolatemod.golden_rocket": "Golden rocket",
+  "item.chocolatemod.gold_man": "Gold Man",
+  "item.chocolatemod.golden_slingshot": "Golden Slingshot",
+  "item.chocolatemod.golden_egg": "Golden Egg",
+  "item.chocolatemod.gold_staff": "Golden Staff",
+
   "item.chocolatemod.chocolate": "Chocolate",
   "item.chocolatemod.valentine_chocolate": "Valentine Chocolate",
   "item.chocolatemod.ore_pickaxe": "Cristal Chocolate Pickaxe",
@@ -38,5 +47,7 @@
   "item.chocolatemod.slingshot.tooltip": "Right-click to shoot!",
   "item.chocolatemod.chocolate_sword.tooltip": "Create chocolates if attack!",
   "item.chocolatemod.magic.tooltip": "Right-click to shoot!",
-  "item.chocolatemod.healer.tooltip": "Right-click to shoot!"
+  "item.chocolatemod.healer.tooltip": "Right-click to shoot!",
+  "item.chocolatemod.eat.tooltip": "acn eat",
+  "item.chocolatemod.rocket.tooltip": "acn eat"
 }

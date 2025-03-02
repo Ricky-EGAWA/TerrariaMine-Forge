@@ -6,26 +6,30 @@ import com.ricky.chocolatemod.block.milk.ModFluidTypes;
 import com.ricky.chocolatemod.block.milk.ModFluids;
 import com.ricky.chocolatemod.block.renderer.*;
 import com.ricky.chocolatemod.client.ChocolateHudOverlay;
+import com.ricky.chocolatemod.client.FoundParticle;
+import com.ricky.chocolatemod.client.ModParticles;
 import com.ricky.chocolatemod.effect.ModEffects;
 import com.ricky.chocolatemod.entity.ModEntities;
 import com.ricky.chocolatemod.entity.monster.CrowedMonsterRenderer;
 import com.ricky.chocolatemod.entity.monster.CrowedWitherRenderer;
 import com.ricky.chocolatemod.entity.monster.SugarSlimeRenderer;
-import com.ricky.chocolatemod.entity.projectile.CupidArrowRenderer;
-import com.ricky.chocolatemod.entity.projectile.HurricaneRenderer;
-import com.ricky.chocolatemod.entity.projectile.MagicEntityRenderer;
-import com.ricky.chocolatemod.entity.projectile.MyArrowRenderer;
+import com.ricky.chocolatemod.entity.monster.fighter.FighterRenderer;
+import com.ricky.chocolatemod.entity.monster.goldman.GoldManRenderer;
+import com.ricky.chocolatemod.entity.projectile.*;
 import com.ricky.chocolatemod.entity.spawn.SpawnModifier;
 import com.ricky.chocolatemod.event.ChocolateSwordEventHandler;
 import com.ricky.chocolatemod.event.SneakHandler;
 import com.ricky.chocolatemod.item.ModCreativeModTabs;
 import com.ricky.chocolatemod.item.ModItems;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -51,6 +55,8 @@ public class ChocolateMod {
         ModEffects.register(modEventBus);
         ModFluids.register(modEventBus);
         ModFluidTypes.register(modEventBus);
+
+        ModParticles.register(modEventBus);
 
         // BiomeModifierの登録
         SpawnModifier.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
@@ -95,14 +101,20 @@ public class ChocolateMod {
             EntityRenderers.register(ModEntities.MAGIC.get(), MagicEntityRenderer::new);
 
 
-            BlockEntityRenderers.register(ModBlocks.EXCHANGE_ORE_PICKAXE_BLOCK_ENTITY.get(), ExchangeOrePickaxeRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_ORE_PICKAXE_BLOCK_ENTITY.get(), ExchangeEaterRenderer::new);
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_HEALER_BLOCK_ENTITY.get(), ExchangeHealerRenderer::new);
-            BlockEntityRenderers.register(ModBlocks.EXCHANGE_HURRICANE_BLOCK_ENTITY.get(), ExchangeHurricaneRenderer::new);
-            BlockEntityRenderers.register(ModBlocks.EXCHANGE_BOMB_BLOCK_ENTITY.get(), ExchangeBombRenderer::new);
-            BlockEntityRenderers.register(ModBlocks.EXCHANGE_CUPID_BLOCK_ENTITY.get(), ExchangeCupidRenderer::new);
-            BlockEntityRenderers.register(ModBlocks.EXCHANGE_SWORD_BLOCK_ENTITY.get(), ExchangeSwordRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_START_BLOCK_ENTITY.get(), ExchangeStartRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_HURRICANE_BLOCK_ENTITY.get(), ExchangeAppleRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_BOMB_BLOCK_ENTITY.get(), ExchangeEggRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_CUPID_BLOCK_ENTITY.get(), ExchangeGoldManRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_SWORD_BLOCK_ENTITY.get(), ExchangeElytraRenderer::new);
             BlockEntityRenderers.register(ModBlocks.EXCHANGE_SLINGSHOT_BLOCK_ENTITY.get(), ExchangeSlingshotRenderer::new);
-            BlockEntityRenderers.register(ModBlocks.EXCHANGE_MAGIC_BLOCK_ENTITY.get(), ExchangeMagicRenderer::new);
+            BlockEntityRenderers.register(ModBlocks.EXCHANGE_MAGIC_BLOCK_ENTITY.get(), ExchangeStaffRenderer::new);
+
+            EntityRenderers.register(ModEntities.GOLD_MAN.get(), GoldManRenderer::new);
+            EntityRenderers.register(ModEntities.FIGHTER.get(), FighterRenderer::new);
+            EntityRenderers.register(ModEntities.CUSTOM_ROCKET.get(), CustomRocketRenderer::new);
+            EntityRenderers.register(ModEntities.HOMING_PROJECTILE.get(), HomingBulletRenderer::new);
 
             new ChocolateHudOverlay(); // HUD オーバーレイの初期化
         }

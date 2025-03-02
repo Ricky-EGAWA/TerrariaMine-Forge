@@ -1,6 +1,5 @@
 package com.ricky.chocolatemod.util;
 
-import com.ricky.chocolatemod.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -23,7 +22,7 @@ public class ChangeChocolate {
         }
         BlockState targetState = level.getBlockState(blockPos);
         if(h){ //腐敗したブロックを置き換え可能
-            if (!targetState.isAir() && targetState.getBlock() != Blocks.BEDROCK && targetState.getBlock() != ModBlocks.CHOCOLATE_BLOCK.get()
+            if (!targetState.isAir() && targetState.getBlock() != Blocks.BEDROCK && targetState.getBlock() != Blocks.GOLD_BLOCK
                     && targetState.isSolid()){
                 //草花を削除
                 BlockPos abovePos = blockPos.above();
@@ -32,11 +31,11 @@ public class ChangeChocolate {
                 if (AFFECTED_BLOCKS.contains(aboveState.getBlock())) {
                     level.setBlockAndUpdate(abovePos, Blocks.AIR.defaultBlockState()); // 花や草を削除
                 }
-                level.setBlock(blockPos, ModBlocks.CHOCOLATE_BLOCK.get().defaultBlockState(), 3);
+                level.setBlock(blockPos, Blocks.GOLD_BLOCK.defaultBlockState(), 3);
                 ChocolateCounter.getInstance().addChocolate(3);
             }
         }else {//腐敗したブロックを置き換えられない
-            if (!targetState.isAir() && targetState.getBlock() != Blocks.BEDROCK && targetState.getBlock() != Blocks.SCULK && targetState.getBlock() != ModBlocks.CHOCOLATE_BLOCK.get()
+            if (!targetState.isAir() && targetState.getBlock() != Blocks.BEDROCK && targetState.getBlock() != Blocks.SCULK && targetState.getBlock() != Blocks.GOLD_BLOCK
                     && targetState.isSolid()){
                 //草花を削除
                 BlockPos abovePos = blockPos.above();
@@ -45,7 +44,7 @@ public class ChangeChocolate {
                 if (AFFECTED_BLOCKS.contains(aboveState.getBlock())) {
                     level.setBlockAndUpdate(abovePos, Blocks.AIR.defaultBlockState()); // 花や草を削除
                 }
-                level.setBlock(blockPos, ModBlocks.CHOCOLATE_BLOCK.get().defaultBlockState(), 3);
+                level.setBlock(blockPos, Blocks.GOLD_BLOCK.defaultBlockState(), 3);
                 ChocolateCounter.getInstance().addChocolate(1);
             }
         }
