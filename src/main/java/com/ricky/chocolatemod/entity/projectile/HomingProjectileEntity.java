@@ -85,7 +85,7 @@ public class HomingProjectileEntity extends Projectile {
             return;
         }
         level.getEntities(this, this.getBoundingBox().inflate(3), entity -> !(entity instanceof Player))
-                .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 60));
+                .forEach(entity -> entity.hurt(this.damageSources().explosion(this, this.getOwner()), 600));
         this.discard();
     }
     @Override

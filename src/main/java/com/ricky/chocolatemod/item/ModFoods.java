@@ -4,4 +4,5 @@ import net.minecraft.world.food.FoodProperties;
 
 public class ModFoods {
     public static final FoodProperties EATER = new FoodProperties.Builder().nutrition(4).fast().build();
+    public static final FoodProperties APPLE = new FoodProperties.Builder().nutrition(4).fast().build();
 }

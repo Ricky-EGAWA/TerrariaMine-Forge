@@ -30,7 +30,7 @@ public class PlayerWalkEvent {
         if (!event.player.level().isClientSide && event.phase == TickEvent.Phase.END) {
             if (event.player.getInventory().getArmor(2).getItem() == ModItems.GOLDEN_ELYTRA.get()) {
                 BlockPos position = event.player.blockPosition();
-                int explosionRadius = 3;
+                int explosionRadius = 6;
                 for (int x = -explosionRadius; x <= explosionRadius; x++) {
                     for (int y = -explosionRadius; y <= explosionRadius; y++) {
                         for (int z = -explosionRadius; z <= explosionRadius; z++) {
@@ -46,7 +46,7 @@ public class PlayerWalkEvent {
                     for (int y = -explosionRadius; y <= explosionRadius; y++) {
                         for (int z = -explosionRadius; z <= explosionRadius; z++) {
                             BlockPos nearbyPos = position.offset(x, y, z);
-                            ChangeChocolate.change(event.player.level(), nearbyPos, false);
+                            ChangeChocolate.change(event.player.level(), nearbyPos, false,5);
                         }
                     }
                 }

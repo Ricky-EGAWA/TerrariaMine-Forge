@@ -48,6 +48,6 @@
   "item.chocolatemod.chocolate_sword.tooltip": "攻撃時にチョコブロックを生成",
   "item.chocolatemod.magic.tooltip": "右クリックで発射",
   "item.chocolatemod.healer.tooltip": "右クリックで分身を召喚",
-  "item.chocolatemod.eat.tooltip": "右クリックで発射",
+  "item.chocolatemod.eat.tooltip": "右クリックで食べられる",
   "item.chocolatemod.rocket.tooltip": "右クリックで発射、ロケット花火としても使える"
 }

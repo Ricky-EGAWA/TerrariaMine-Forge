@@ -5,6 +5,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Set;
 
@@ -16,7 +17,10 @@ public class ChangeChocolate {
             Blocks.CORNFLOWER, Blocks.LILY_OF_THE_VALLEY, Blocks.SUNFLOWER, Blocks.LILAC, Blocks.ROSE_BUSH,
             Blocks.PEONY, Blocks.GRASS, Blocks.TALL_GRASS, Blocks.FERN, Blocks.LARGE_FERN
     );
-    public static void change(Level level, BlockPos blockPos, boolean h){
+    public static void change(Level level, BlockPos blockPos, boolean h) {
+        change(level, blockPos, h, 1); // デフォルト値を設定
+    }
+    public static void change(Level level, BlockPos blockPos, boolean h, int num){
         if (level.dimension().location().toString().equals("chocolatemod:chocolate_dimension")){
             return;
         }
@@ -45,7 +49,7 @@ public class ChangeChocolate {
                     level.setBlockAndUpdate(abovePos, Blocks.AIR.defaultBlockState()); // 花や草を削除
                 }
                 level.setBlock(blockPos, Blocks.GOLD_BLOCK.defaultBlockState(), 3);
-                ChocolateCounter.getInstance().addChocolate(1);
+                ChocolateCounter.getInstance().addChocolate(num);
             }
         }
     }

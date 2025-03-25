@@ -1,6 +1,7 @@
 package com.ricky.chocolatemod.item.custom;
 
 import com.ricky.chocolatemod.item.ModFoods;
+import com.ricky.chocolatemod.util.ChocolateCounter;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class GoldenApple extends Item {
     public GoldenApple() {
-        super(new Properties().food(ModFoods.EATER)); // 食べ物のプロパティを設定
+        super(new Properties().food(ModFoods.APPLE)); // 食べ物のプロパティを設定
     }
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
@@ -38,6 +39,7 @@ public class GoldenApple extends Item {
             if (!player.getPersistentData().getBoolean("ate_golden_apple")) {
                 player.getPersistentData().putBoolean("ate_golden_apple", true);
             }
+            ChocolateCounter.getInstance().addChocolate(1000);
 
             // **金リンゴのバフ効果を適用**
             if (!level.isClientSide) {

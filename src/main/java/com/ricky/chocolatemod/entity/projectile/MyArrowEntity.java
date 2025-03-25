@@ -65,11 +65,11 @@ public class MyArrowEntity extends AbstractArrow {
                 this.discard();
             }
         } else{
-            for (int x = -2; x <= 2; x++) {
-                for (int y = -2; y <= 2; y++) {
-                    for (int z = -2; z <= 2; z++) {
+            for (int x = -3; x <= 3; x++) {
+                for (int y = -3; y <= 3; y++) {
+                    for (int z = -3; z <= 3; z++) {
                         BlockPos nearbyPos = hitPos.offset(x, y, z);
-                        ChangeChocolate.change(this.level(), nearbyPos, false);
+                        ChangeChocolate.change(this.level(), nearbyPos, false,2);
                     }
                 }
             }
